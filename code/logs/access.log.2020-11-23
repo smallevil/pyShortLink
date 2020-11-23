@@ -1,0 +1,310 @@
+2020-11-23 22:23:02:werkzeug:INFO:88: * Running on http://127.0.0.1:8888/ (Press CTRL+C to quit)
+2020-11-23 22:23:02:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 22:23:02:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 22:23:02:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 22:23:09:werkzeug:INFO:88:127.0.0.1 - - [23/Nov/2020 22:23:09] "GET / HTTP/1.1" 404 -
+2020-11-23 22:23:10:werkzeug:INFO:88:127.0.0.1 - - [23/Nov/2020 22:23:10] "GET /favicon.ico HTTP/1.1" 404 -
+2020-11-23 22:23:13:werkzeug:INFO:88:127.0.0.1 - - [23/Nov/2020 22:23:13] "GET / HTTP/1.1" 404 -
+2020-11-23 22:23:34:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/shortlink_server.py', reloading
+2020-11-23 22:23:35:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 22:23:36:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 22:23:36:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 22:23:38:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/shortlink_server.py', reloading
+2020-11-23 22:23:39:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 22:23:40:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 22:23:40:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 22:23:41:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/shortlink_server.py', reloading
+2020-11-23 22:23:42:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 22:23:43:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 22:23:43:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 22:23:44:werkzeug:INFO:88:127.0.0.1 - - [23/Nov/2020 22:23:44] "GET / HTTP/1.1" 200 -
+2020-11-23 22:33:58:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/shortlink_server.py', reloading
+2020-11-23 22:33:59:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 22:34:00:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 22:34:00:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 22:34:01:werkzeug:INFO:88:127.0.0.1 - - [23/Nov/2020 22:34:01] "GET / HTTP/1.1" 500 -
+2020-11-23 22:34:01:werkzeug:INFO:88:127.0.0.1 - - [23/Nov/2020 22:34:01] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2020-11-23 22:34:01:werkzeug:INFO:88:127.0.0.1 - - [23/Nov/2020 22:34:01] "GET /?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2020-11-23 22:34:01:werkzeug:INFO:88:127.0.0.1 - - [23/Nov/2020 22:34:01] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2020-11-23 22:34:01:werkzeug:INFO:88:127.0.0.1 - - [23/Nov/2020 22:34:01] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2020-11-23 22:34:01:werkzeug:INFO:88:127.0.0.1 - - [23/Nov/2020 22:34:01] "GET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2020-11-23 22:34:02:werkzeug:INFO:88:127.0.0.1 - - [23/Nov/2020 22:34:02] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2020-11-23 22:34:30:werkzeug:INFO:88:127.0.0.1 - - [23/Nov/2020 22:34:30] "GET /?device=xx HTTP/1.1" 200 -
+2020-11-23 22:55:02:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 22:55:03:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 22:55:04:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 22:55:04:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 22:55:11:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 22:55:12:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 22:55:13:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 22:55:13:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 22:55:23:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 22:55:24:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 22:55:24:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 22:55:24:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 22:55:27:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 22:55:28:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 22:55:28:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 22:55:28:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:00:49:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:00:50:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:00:51:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:00:51:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:05:10:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:05:11:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:05:12:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:05:12:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:05:16:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:05:17:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:05:18:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:05:18:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:09:58:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:09:59:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:10:00:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:10:00:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:10:02:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:10:03:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:10:04:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:10:04:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:10:10:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:10:11:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:10:11:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:10:11:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:10:15:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:10:16:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:10:17:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:10:17:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:10:18:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:10:19:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:10:19:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:10:19:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:10:53:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:10:54:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:10:54:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:10:54:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:10:55:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:10:56:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:10:57:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:10:57:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:11:15:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:11:16:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:11:17:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:11:17:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:11:17:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:11:18:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:11:19:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:11:19:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:11:24:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:11:25:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:11:26:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:11:26:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:12:04:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:12:05:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:12:06:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:12:06:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:12:08:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:12:09:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:12:10:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:12:10:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:13:43:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:13:44:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:13:45:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:13:45:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:13:46:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:13:47:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:13:48:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:13:48:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:14:00:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:14:01:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:14:01:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:14:01:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:14:23:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:14:24:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:14:25:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:14:25:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:14:44:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:14:45:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:14:46:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:14:46:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:14:49:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:14:50:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:14:51:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:14:51:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:15:27:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:15:28:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:15:29:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:15:29:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:15:52:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:15:53:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:15:53:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:15:53:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:16:06:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:16:07:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:16:08:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:16:08:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:16:12:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:16:13:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:16:14:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:16:14:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:16:16:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:16:18:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:16:18:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:16:18:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:16:29:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:16:31:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:16:31:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:16:31:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:16:51:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:16:52:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:16:53:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:16:53:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:16:54:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:16:55:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:16:56:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:16:56:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:17:37:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:17:38:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:17:38:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:17:38:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:17:44:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:17:45:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:17:46:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:17:46:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:17:54:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:17:55:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:17:55:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:17:55:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:18:04:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:18:05:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:18:05:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:18:05:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:18:10:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:18:11:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:18:12:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:18:12:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:18:14:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:18:15:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:18:16:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:18:16:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:18:19:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:18:20:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:18:21:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:18:21:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:18:25:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:18:26:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:18:27:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:18:27:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:18:34:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:18:35:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:18:36:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:18:36:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:18:44:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:18:45:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:18:46:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:18:46:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:18:52:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:18:53:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:18:54:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:18:54:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:18:58:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:18:59:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:18:59:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:18:59:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:19:31:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:19:32:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:19:33:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:19:33:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:19:38:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:19:39:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:19:39:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:19:39:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:19:55:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:19:56:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:19:57:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:19:57:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:20:02:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:20:03:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:20:03:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:20:03:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:20:08:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:20:09:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:20:09:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:20:09:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:20:10:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:20:11:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:20:12:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:20:12:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:20:15:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:20:16:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:20:16:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:20:16:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:21:09:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:21:10:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:21:11:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:21:11:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:21:32:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:21:33:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:21:33:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:21:33:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:21:34:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:21:35:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:21:36:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:21:36:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:21:38:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:21:39:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:21:40:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:21:40:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:21:41:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:21:42:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:21:42:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:21:42:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:21:57:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:21:58:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:21:58:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:21:58:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:22:14:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:22:15:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:22:16:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:22:16:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:22:20:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:22:21:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:22:21:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:22:21:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:22:23:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:22:24:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:22:25:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:22:25:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:22:27:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:22:28:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:22:28:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:22:28:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:22:29:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:22:30:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:22:31:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:22:31:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:22:41:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:22:42:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:22:42:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:22:42:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:22:44:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:22:45:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:22:46:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:22:46:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:23:10:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/libs/urls.py', reloading
+2020-11-23 23:23:11:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:23:12:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:23:12:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:24:50:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/shortlink_server.py', reloading
+2020-11-23 23:24:51:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:24:51:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:24:51:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:24:57:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/shortlink_server.py', reloading
+2020-11-23 23:24:58:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:24:58:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:24:58:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:27:38:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/shortlink_server.py', reloading
+2020-11-23 23:27:39:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-11-23 23:27:39:werkzeug:WARNING:88: * Debugger is active!
+2020-11-23 23:27:39:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-23 23:28:25:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/shortlink_server.py', reloading
+2020-11-23 23:28:26:werkzeug:INFO:88: * Restarting with fsevents reloader
