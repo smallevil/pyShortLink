@@ -2,10 +2,11 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-24 11:53:44
+# @Last Modified time: 2020-11-24 16:49:01
 
 from flask import Blueprint, render_template, redirect, session, request, current_app
 import functools
+from ..models.AdminModel import AdminModel
 
 admin = Blueprint('admin', __name__, url_prefix='/admin')
 
@@ -16,39 +17,50 @@ def isLogin(func):
         uid = session.get('uid')
         un = session.get('un')
         level = session.get('level')
-        if not user_id or not un or not level:
-            return redirect('/login') #没有登录就跳转到登录路由下
+        if not uid or not un or not level:
+            return redirect('/admin/login') #没有登录就跳转到登录路由下
         else:
             # 已经登录的话 g变量保存用户信息，相当于flask程序的全局变量
-            g.user_id = user_id
             return func(*args, **kwargs)
     return inner
 
 
 #后台登录
-@admin.route('/login', methods=['GET'])
+@admin.route('/login', methods=['GET', 'POST'])
 def adminLogin():
-    session.clear
-    print(current_app.config)
+    session.clear()
+    if request.method == 'POST':
+        nick = request.form.get('nick')
+        passwd = request.form.get('passwd')
+        if not nick or not passwd:
+            return redirect('/admin/login')
+
+        model = AdminModel(current_app.config['DATABASE_URI'])
+        userInfo = model.adminLogin(nick, passwd)
+        if userInfo:
+            session['uid'] = userInfo['id']
+            session['un'] = userInfo['nick']
+            session['level'] = userInfo['level']
+            return redirect('/admin/main')
+        else:
+            return redirect('/admin/login')
+
+
     return render_template('/admin/login.html')
 
 
 #后台首页
-@admin.route('/', methods=['GET', 'POST'])
+@admin.route('/', methods=['GET'])
+@isLogin
 def adminIndex():
-    if request.method == 'POST':
-        nick = request.form.get('nick')
-        passwd = request.form.get('passwd')
-        return redirect('/admin/main')
-
-    return redirect('/admin/login')
+    return redirect('/admin/main')
 
 
 #后台退出页
 @admin.route('/logout', methods=['GET', 'POST'])
 @isLogin
 def adminLogout():
-    session.clear
+    session.clear()
     return redirect('/admin/')
 
 

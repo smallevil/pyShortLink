@@ -1,0 +1,33 @@
+<div class="three wide column">
+            <div class="ui vertical menu">
+                <div class="item">
+                    <div class="header">短链接</div>
+                    <div class="menu">
+                        {% if request.path == '/admin/add' %}
+                        <a href="/admin/add" class="item active red">创建短链接</a>
+                        {% else %}
+                        <a href="/admin/add" class="item">创建短链接</a>
+                        {% endif %}
+
+                        {% if request.path == '/admin/urllist' %}
+                        <a href="/admin/urllist" class="item active red">我的短链接</a>
+                        {% else %}
+                        <a href="/admin/urllist" class="item">我的短链接</a>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="header">账户管理</div>
+                    <div class="menu">
+                        {% if request.path == '/admin/profile' %}
+                        <a href="/admin/profile" class="item active red">个人中心</a>
+                        {% else %}
+                        <a href="/admin/profile" class="item">个人中心</a>
+                        {% endif %}
+
+                        <a href="{{ url_for('admin.adminLogout') }}" class="item">退出</a>
+                    </div>
+                </div>
+            </div>
+        </div>
