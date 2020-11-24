@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-24 16:49:01
+# @Last Modified time: 2020-11-24 21:02:50
 
 from flask import Blueprint, render_template, redirect, session, request, current_app
 import functools
@@ -69,3 +69,20 @@ def adminLogout():
 @isLogin
 def adminMain():
     return render_template('/admin/main.html')
+
+
+#添加短链
+@admin.route('/add', methods=['GET', 'POST'])
+@isLogin
+def adminAdd():
+    if request.method == 'POST':
+        url = request.form.get('url')
+        if url:
+            model = AdminModel(current_app.config['DATABASE_URI'])
+            ret = model.addLinkInfo(session.get('uid'), url)
+            if ret:
+                return redirect('/admin/stat/' + ret['key'])
+
+        return redirect('/admin/add')
+
+    return render_template('/admin/add.html')
