@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-24 21:02:50
+# @Last Modified time: 2020-11-24 23:09:48
 
 from flask import Blueprint, render_template, redirect, session, request, current_app
 import functools
@@ -86,3 +86,18 @@ def adminAdd():
         return redirect('/admin/add')
 
     return render_template('/admin/add.html')
+
+
+#所有链接
+@admin.route('/urls/page/<int:page>', methods=['GET'])
+@isLogin
+def adminUrls(page):
+    if not page:
+        page = 1
+
+    if page < 1:
+        page = 1
+
+    model = AdminModel(current_app.config['DATABASE_URI'])
+    ret = model.getUrlsByUserID(session.get('uid'), page)
+    return render_template('/admin/urls.html', tplData=ret)

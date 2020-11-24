@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-24 21:05:58
+# @Last Modified time: 2020-11-24 23:03:35
 
 import hashlib
 from TBDB import *
@@ -34,21 +34,26 @@ class AdminModel(object):
         if info:
             return {'key':info['link_key']}
 
-        linkKeys = self.shortKey(url)
+        ret = self._db.addLinkInfo(url, urlmd5, userID)
+        if ret:
+            return {'key':ret}
+        else:
+            return None
 
-        for linkKey in linkKeys:
-            if not self._db.getLinkInfoByKey(linkKey):
-                self._db.addLinkInfo(linkKey, url, urlmd5, userID)
-                return {'key':linkKey}
+    #得到指定用户所有短链
+    def getUrlsByUserID(self, userID, page):
+        limit = 10
+        start = (page - 1) * limit
+        return self._db.getUrlsByUserID(userID, start, limit)
 
-        return None
 
     def md5(self, key):
         return hashlib.md5(key).hexdigest()
 
+
     #产生短链接key
     #此算法有问题,当不同用户超过4次对同一网址创建短链时无法成功
-    def shortKey(self, url):
+    def shortKeyForMD5(self, url):
         base32 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
                    'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
                    'q', 'r', 's', 't', 'u', 'v', 'w', 'x',

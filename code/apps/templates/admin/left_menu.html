@@ -4,15 +4,15 @@
                     <div class="header">短链接</div>
                     <div class="menu">
                         {% if request.path == '/admin/add' %}
-                        <a href="/admin/add" class="item active red">新建短链接</a>
+                        <a href="{{ url_for('admin.adminAdd') }}" class="item active red">新建短链接</a>
                         {% else %}
-                        <a href="/admin/add" class="item">新建短链接</a>
+                        <a href="{{ url_for('admin.adminAdd') }}" class="item">新建短链接</a>
                         {% endif %}
 
-                        {% if request.path == '/admin/urllist' %}
-                        <a href="/admin/urllist" class="item active red">我的短链接</a>
+                        {% if request.path.find('/admin/urls') >= 0 %}
+                        <a href="{{ url_for('admin.adminUrls', page=1) }}" class="item active red">我的短链接</a>
                         {% else %}
-                        <a href="/admin/urllist" class="item">我的短链接</a>
+                        <a href="{{ url_for('admin.adminUrls', page=1) }}" class="item">我的短链接</a>
                         {% endif %}
                     </div>
                 </div>
