@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-25 22:11:49
+# @Last Modified time: 2020-11-25 22:43:36
 
 import arrow
 import geoip2.database
@@ -24,8 +24,11 @@ def fav():
 #前台404
 @front.route('/error')
 def frontError():
-    return render_template('/error.html')
-    #return ''
+    msg = '出错啦!'
+    if len(request.args.get('msg')) > 0:
+        msg = request.args.get('msg')
+
+    return render_template('/error.html', msg=msg)
 
 
 #前台首页
@@ -34,7 +37,11 @@ def frontIndex(key):
     model = FrontModel(current_app.config['DATABASE_URI'])
     linkInfo = model.getLinkInfoByKey(key)
     if not linkInfo:
-        return redirect('/error')
+        return redirect('/error?msg=访问出错')
+
+    if linkInfo['link_status'] == -1:
+        return redirect('/error?msg=你所访问的链接有风险')
+
     url = linkInfo['link_url']
 
     ua = request.headers.get("User-Agent")
@@ -100,6 +107,7 @@ def getAddressFromGEO(ip):
             pass
 
     return address
+
 
 def getAddressFromRegion(ip):
     address = {'country':'other', 'province':'other', 'city':'other'}

@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-25 13:46:40
+# @Last Modified time: 2020-11-25 22:43:23
 
 from flask import Blueprint, render_template, redirect, session, request, current_app
 import functools
@@ -58,6 +58,17 @@ def adminIndex():
     return redirect('/admin/main')
 
 
+#后台首页
+@admin.route('/error', methods=['GET'])
+@isLogin
+def adminError():
+    msg = '出错啦!'
+    if len(request.args.get('msg')) > 0:
+        msg = request.args.get('msg')
+
+    return render_template('/admin/error.html', msg=msg)
+
+
 #后台退出页
 @admin.route('/logout', methods=['GET', 'POST'])
 @isLogin
@@ -79,6 +90,9 @@ def adminMain():
 def adminAdd():
     if request.method == 'POST':
         url = request.form.get('url')
+        if url[0:4] != 'http':
+            return redirect('/error?msg=链接格式错误')
+
         domain = request.form.get('domain')
         tag = request.form.get('tag')
         if url and domain:
@@ -86,6 +100,8 @@ def adminAdd():
             ret = model.addLinkInfo(session.get('uid'), url, domain, tag)
             if ret:
                 return redirect('/admin/stat/' + ret['key'])
+        else:
+            return redirect('/error?msg=url和域名必选')
 
         return redirect('/admin/add')
 
