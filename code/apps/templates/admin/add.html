@@ -26,6 +26,21 @@
                         <div class="field">
                             <label>输入完整url</label>
                             <input type="text" name="url" placeholder="完整url">
+
+                            <div class="inline fields">
+                                <label for="fruit">选择域名</label>
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" name="domain" checked class="hidden" value="j3j.cn"><label>j3j.cn</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" name="domain" class="hidden" value="111.cn"><label>111.cn</label>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <button class="ui button primary" type="submit">新建</button>
                     </form>
@@ -35,5 +50,10 @@
     <div>
 
 </body>
-
+<script>
+    $(document).ready(function() {
+        $('.ui.radio.checkbox')
+            .checkbox();
+    });
+</script>
 </html>
