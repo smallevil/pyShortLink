@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-25 13:47:17
+# @Last Modified time: 2020-11-25 21:43:18
 
 import records
 from hashids import Hashids
@@ -108,7 +108,29 @@ class TBDB(object):
 
         return info
 
+    def getOriginalUrlByKey(self, key):
+        if not key:
+            return None
 
+        params = {'key':key}
+        sql = "select * from link_info where link_key=:key"
+        rows = self._conn.query(sql, **params)
+        row = rows.first(as_dict=True)
+        if row:
+            return row['link_url']
+        else:
+            return None
+
+    def addRecord(self, linkID, uaStr, uvStatus, referrer, platform, browser, device, userIP, country, province, city):
+        if not linkID:
+            return None
+
+        country = country.decode('utf-8')
+        province = province.decode('utf-8')
+        city = city.decode('utf-8')
+        params = {'link_id':int(linkID), 'ua':str(uaStr), 'uv_status':int(uvStatus), 'referrer':str(referrer), 'platform':str(platform), 'browser':str(browser), 'device':str(device),  'ip':str(userIP), 'country':country, 'province':province, 'city':city, 'date':str(arrow.now().format('YYYY-MM-DD')), 'ctime':str(arrow.now().format('YYYY-MM-DD HH:mm:ss'))}
+        sql = "insert into link_record (record_ua, record_referer, record_uv_status, record_ip, record_platform, record_browser, record_device, record_country, record_province, record_city, link_id, record_date, record_ctime) values (:ua, :referrer, :uv_status, :ip, :platform, :browser, :device, :country, :province, :city, :link_id, :date, :ctime)"
+        self._conn.query(sql, **params)
 
 
 
