@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-25 21:43:18
+# @Last Modified time: 2020-11-25 21:57:29
 
 import records
 from hashids import Hashids
@@ -121,15 +121,15 @@ class TBDB(object):
         else:
             return None
 
-    def addRecord(self, linkID, uaStr, uvStatus, referrer, platform, browser, device, userIP, country, province, city):
+    def addRecord(self, linkID, uaStr, uvStatus, uaType, referrer, platform, browser, device, userIP, country, province, city):
         if not linkID:
             return None
 
         country = country.decode('utf-8')
         province = province.decode('utf-8')
         city = city.decode('utf-8')
-        params = {'link_id':int(linkID), 'ua':str(uaStr), 'uv_status':int(uvStatus), 'referrer':str(referrer), 'platform':str(platform), 'browser':str(browser), 'device':str(device),  'ip':str(userIP), 'country':country, 'province':province, 'city':city, 'date':str(arrow.now().format('YYYY-MM-DD')), 'ctime':str(arrow.now().format('YYYY-MM-DD HH:mm:ss'))}
-        sql = "insert into link_record (record_ua, record_referer, record_uv_status, record_ip, record_platform, record_browser, record_device, record_country, record_province, record_city, link_id, record_date, record_ctime) values (:ua, :referrer, :uv_status, :ip, :platform, :browser, :device, :country, :province, :city, :link_id, :date, :ctime)"
+        params = {'link_id':int(linkID), 'ua':str(uaStr), 'uv_status':int(uvStatus), 'ua_type':uaType, 'referrer':str(referrer), 'platform':str(platform), 'browser':str(browser), 'device':str(device),  'ip':str(userIP), 'country':country, 'province':province, 'city':city, 'date':str(arrow.now().format('YYYY-MM-DD')), 'ctime':str(arrow.now().format('YYYY-MM-DD HH:mm:ss'))}
+        sql = "insert into link_record (record_ua, record_referer, record_uv_status, record_ip, record_platform, record_browser, record_device, record_ua_type, record_country, record_province, record_city, link_id, record_date, record_ctime) values (:ua, :referrer, :uv_status, :ip, :platform, :browser, :device, :ua_type, :country, :province, :city, :link_id, :date, :ctime)"
         self._conn.query(sql, **params)
 
 

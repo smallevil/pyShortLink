@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-25 21:32:24
+# @Last Modified time: 2020-11-25 21:56:44
 
 from user_agents import parse
 from TBDB import *
@@ -36,7 +36,17 @@ class FrontModel(object):
         browser = ua.browser.family.replace('Mobile', '').strip()
         device = ua.device.family
 
-        self._db.addRecord(linkID, uaStr, uvStatus, referrer, platform, browser, device, userIP, address['country'], address['province'], address['city'])
+        uaType = 0
+        if ua.is_mobile:
+            uaType = 4
+        elif ua.is_tablet:
+            uaType = 3
+        elif ua.is_pc:
+            uaType = 2
+        elif ua.is_bot:
+            uaType = 1
+
+        self._db.addRecord(linkID, uaStr, uvStatus, uaType, referrer, platform, browser, device, userIP, address['country'], address['province'], address['city'])
 
 
 
