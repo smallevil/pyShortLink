@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-24 23:03:35
+# @Last Modified time: 2020-11-25 12:12:51
 
 import hashlib
 from TBDB import *
@@ -41,9 +41,7 @@ class AdminModel(object):
             return None
 
     #得到指定用户所有短链
-    def getUrlsByUserID(self, userID, page):
-        limit = 10
-        start = (page - 1) * limit
+    def getUrlsByUserID(self, userID, start, limit):
         return self._db.getUrlsByUserID(userID, start, limit)
 
 

@@ -2,11 +2,13 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-24 23:09:48
+# @Last Modified time: 2020-11-25 13:17:34
 
 from flask import Blueprint, render_template, redirect, session, request, current_app
 import functools
 from ..models.AdminModel import AdminModel
+
+import math
 
 admin = Blueprint('admin', __name__, url_prefix='/admin')
 
@@ -98,6 +100,51 @@ def adminUrls(page):
     if page < 1:
         page = 1
 
+    limit = 10
+    start = (page - 1) * limit
+
     model = AdminModel(current_app.config['DATABASE_URI'])
-    ret = model.getUrlsByUserID(session.get('uid'), page)
+    ret = model.getUrlsByUserID(session.get('uid'), start, limit)
+
+    #以下简化模板判断
+    totalPage = math.ceil(ret['total'] / (limit * 1.0))
+
+    minPage = page - 2
+    if page - 2 < 1:
+        minPage = 1
+        maxPage = 5
+    else:
+        maxPage = page + 2
+
+    if maxPage > totalPage:
+        maxPage = totalPage
+        minPage = totalPage - 4
+        if minPage < 1:
+            minPage = 1
+
+    ret['min_page'] = int(minPage)
+    ret['max_page'] = int(maxPage)
+    ret['total_page'] = int(totalPage)
+    ret['page'] = page
+
+    ret['pre_page'] = True
+    if page <= minPage:
+        ret['pre_page'] = False
+
+    ret['next_page'] = True
+    if page >= maxPage:
+        ret['next_page'] = False
+
     return render_template('/admin/urls.html', tplData=ret)
+
+
+
+
+
+
+
+
+
+
+
+

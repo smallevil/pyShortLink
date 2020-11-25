@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-24 23:02:28
+# @Last Modified time: 2020-11-25 12:46:46
 
 import records
 from hashids import Hashids
@@ -89,10 +89,6 @@ class TBDB(object):
     def getUrlsByUserID(self, userID, start, limit):
         if not userID:
             return None
-
-        if not start or not limit or start < 0 or limit < 0:
-            start = 0
-            limit = 10
 
         params = {'uid':userID, 'start':start, 'limit':limit}
         if self._dbType:
