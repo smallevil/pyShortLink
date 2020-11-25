@@ -7,6 +7,7 @@
 from flask import Flask
 from views import admin
 from views import front
+from models import AdminModel
 
 app = Flask(__name__, template_folder='templates', static_folder='static', instance_relative_config=True)
 app.config.from_object('config')

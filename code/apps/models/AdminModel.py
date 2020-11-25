@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-25 13:46:53
+# @Last Modified time: 2020-11-26 01:25:08
 
 import hashlib
 from TBDB import *
@@ -26,6 +26,9 @@ class AdminModel(object):
         userInfo['nick'] = info['user_nick']
         userInfo['level'] = info['user_level']
         return userInfo
+
+    def getUserInfoByID(self, userID):
+        return self._db.getUserInfoByID(userID)
 
     #添加短链接
     def addLinkInfo(self, userID, url, domain, tag):
@@ -72,5 +75,20 @@ class AdminModel(object):
                 res = res >> 5
             output.append(out)
         return output
+
+
+    #整理统计
+    def setStatDay(self):
+        start = 0
+        limit = 10000
+        while True:
+            urls = self._db.getUrlsByUserID(0, start, limit)
+            if not urls['list']:
+                break
+
+            start = start + limit
+
+            for urlInfo in urls['list']:
+                self._db.statDay(urlInfo['link_id'])
 
 

@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-25 22:59:28
+# @Last Modified time: 2020-11-26 00:46:20
 
 from flask import Blueprint, render_template, redirect, session, request, current_app
 import functools
@@ -60,7 +60,6 @@ def adminIndex():
 
 #后台首页
 @admin.route('/error', methods=['GET'])
-@isLogin
 def adminError():
     msg = '出错啦!'
     if len(request.args.get('msg')) > 0:
@@ -83,6 +82,34 @@ def adminLogout():
 def adminMain():
     return render_template('/admin/main.html')
 
+#个人中心
+@admin.route('/profile', methods=['GET', 'POST'])
+@isLogin
+def adminProfile():
+    if request.method == 'POST':
+        oldPasswd = request.form.get('old_passwd')
+        newPasswd = request.form.get('new_passwd')
+        renewPasswd = request.form.get('renew_passwd')
+
+        if newPasswd != renewPasswd:
+            return redirect('/error?msg=' + urllib.quote('两次输入密码不一样'))
+
+        if oldPasswd == newPasswd:
+            return redirect('/error?msg=' + urllib.quote('新密码不能与老密码相同'))
+
+        model = AdminModel(current_app.config['DATABASE_URI'])
+        userInfo = model.getUserInfoByID(session['uid'])
+        if not userInfo:
+            session.clear()
+            return redirect('/error?msg=' + urllib.quote('异常退出'))
+
+        if model.md5(oldPasswd) != userInfo['user_passwd']:
+            return redirect('/error?msg=' + urllib.quote('旧密码错误'))
+
+        model.getDB().updateUserPasswd(session['uid'], model.md5(newPasswd))
+        return redirect('/admin/logout')
+    else:
+        return render_template('/admin/profile.html')
 
 #添加短链
 @admin.route('/add', methods=['GET', 'POST'])
