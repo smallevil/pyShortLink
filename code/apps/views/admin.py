@@ -2,13 +2,13 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-25 22:43:23
+# @Last Modified time: 2020-11-25 22:59:28
 
 from flask import Blueprint, render_template, redirect, session, request, current_app
 import functools
 from ..models.AdminModel import AdminModel
 
-import math
+import math, urllib
 
 admin = Blueprint('admin', __name__, url_prefix='/admin')
 
@@ -64,7 +64,7 @@ def adminIndex():
 def adminError():
     msg = '出错啦!'
     if len(request.args.get('msg')) > 0:
-        msg = request.args.get('msg')
+        msg = urllib.unquote(request.args.get('msg'))
 
     return render_template('/admin/error.html', msg=msg)
 
@@ -91,7 +91,7 @@ def adminAdd():
     if request.method == 'POST':
         url = request.form.get('url')
         if url[0:4] != 'http':
-            return redirect('/error?msg=链接格式错误')
+            return redirect('/error?msg=' + urllib.quote('链接格式错误'))
 
         domain = request.form.get('domain')
         tag = request.form.get('tag')
@@ -101,7 +101,7 @@ def adminAdd():
             if ret:
                 return redirect('/admin/stat/' + ret['key'])
         else:
-            return redirect('/error?msg=url和域名必选')
+            return redirect('/error?msg=' + urllib.quote('url和域名必选'))
 
         return redirect('/admin/add')
 

@@ -2,9 +2,9 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-25 22:43:36
+# @Last Modified time: 2020-11-25 22:56:27
 
-import arrow
+import arrow, urllib
 import geoip2.database
 from ..models.ip2Region import Ip2Region
 from flask import Blueprint, render_template, redirect, session, request, make_response, current_app
@@ -26,7 +26,7 @@ def fav():
 def frontError():
     msg = '出错啦!'
     if len(request.args.get('msg')) > 0:
-        msg = request.args.get('msg')
+        msg = urllib.unquote(request.args.get('msg'))
 
     return render_template('/error.html', msg=msg)
 
@@ -37,10 +37,10 @@ def frontIndex(key):
     model = FrontModel(current_app.config['DATABASE_URI'])
     linkInfo = model.getLinkInfoByKey(key)
     if not linkInfo:
-        return redirect('/error?msg=访问出错')
+        return redirect('/error?msg=' + urllib.quote('访问出错'))
 
     if linkInfo['link_status'] == -1:
-        return redirect('/error?msg=你所访问的链接有风险')
+        return redirect('/error?msg=' + urllib.quote('你所访问的链接有风险'))
 
     url = linkInfo['link_url']
 
