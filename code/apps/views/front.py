@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-25 21:45:51
+# @Last Modified time: 2020-11-25 22:11:49
 
 import arrow
 import geoip2.database
@@ -12,6 +12,11 @@ from ..models.FrontModel import FrontModel
 
 front = Blueprint('front', __name__)
 
+@front.route('/')
+def webIndex():
+    return ''
+
+
 @front.route('/favicon.ico')
 def fav():
     return ''
@@ -19,7 +24,7 @@ def fav():
 #前台404
 @front.route('/error')
 def frontError():
-    return redirect('/error')
+    return render_template('/error.html')
     #return ''
 
 
