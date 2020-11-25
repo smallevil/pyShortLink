@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-25 13:28:08
+# @Last Modified time: 2020-11-25 13:46:40
 
 from flask import Blueprint, render_template, redirect, session, request, current_app
 import functools
@@ -80,9 +80,10 @@ def adminAdd():
     if request.method == 'POST':
         url = request.form.get('url')
         domain = request.form.get('domain')
+        tag = request.form.get('tag')
         if url and domain:
             model = AdminModel(current_app.config['DATABASE_URI'])
-            ret = model.addLinkInfo(session.get('uid'), url, domain)
+            ret = model.addLinkInfo(session.get('uid'), url, domain, tag)
             if ret:
                 return redirect('/admin/stat/' + ret['key'])
 

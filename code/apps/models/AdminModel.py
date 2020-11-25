@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-25 13:28:40
+# @Last Modified time: 2020-11-25 13:46:53
 
 import hashlib
 from TBDB import *
@@ -28,13 +28,13 @@ class AdminModel(object):
         return userInfo
 
     #添加短链接
-    def addLinkInfo(self, userID, url, domain):
+    def addLinkInfo(self, userID, url, domain, tag):
         urlmd5 = self.md5(url)
         info = self._db.getLinkInfoByMD5(userID, urlmd5)
         if info:
             return {'key':info['link_key']}
 
-        ret = self._db.addLinkInfo(domain, url, urlmd5, userID)
+        ret = self._db.addLinkInfo(domain, url, urlmd5, userID, tag)
         if ret:
             return {'key':ret}
         else:

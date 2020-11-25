@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-25 13:31:32
+# @Last Modified time: 2020-11-25 13:47:17
 
 import records
 from hashids import Hashids
@@ -61,13 +61,13 @@ class TBDB(object):
             return None
 
     #添加短链
-    def addLinkInfo(self, domain, url, urlmd5, userID):
+    def addLinkInfo(self, domain, url, urlmd5, userID, tag):
         if not domain or not url or not urlmd5 or not userID:
             return None
 
         with self._db.transaction() as tx:
-            params = {'domain':domain, 'url':url, 'urlmd5':urlmd5, 'uid':userID, 'ctime':str(arrow.now().format('YYYY-MM-DD HH:mm:ss'))}
-            sql = "insert into link_info (link_domain, link_url, link_url_md5, user_id, link_ctime) values (:domain, :url, :urlmd5, :uid, :ctime)"
+            params = {'tag':tag, 'domain':domain, 'url':url, 'urlmd5':urlmd5, 'uid':userID, 'ctime':str(arrow.now().format('YYYY-MM-DD HH:mm:ss'))}
+            sql = "insert into link_info (link_tag, link_domain, link_url, link_url_md5, user_id, link_ctime) values (:tag, :domain, :url, :urlmd5, :uid, :ctime)"
             tx.query(sql, **params)
             if self._dbType:
                 sql = "select last_insert_id() as last_id"
