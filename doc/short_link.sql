@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 9.9.9.9
--- Generation Time: 2020-11-26 22:17:10
+-- Generation Time: 2020-11-27 02:39:07
 -- 服务器版本： 5.6.17-log
 -- PHP Version: 5.5.11
 
@@ -36,9 +36,8 @@ CREATE TABLE IF NOT EXISTS `link_info` (
   `link_status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '1:正常 -1:关闭',
   `user_id` int(10) unsigned NOT NULL DEFAULT '0',
   `link_ctime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
 
 --
 -- 表的结构 `link_record`
@@ -60,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `link_record` (
   `link_id` int(10) unsigned NOT NULL,
   `record_date` date NOT NULL DEFAULT '0000-00-00',
   `record_ctime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -70,13 +69,14 @@ CREATE TABLE IF NOT EXISTS `link_record` (
 
 CREATE TABLE IF NOT EXISTS `link_stat` (
 `stat_id` bigint(20) unsigned NOT NULL,
+  `stat_type` varchar(10) NOT NULL DEFAULT 'minute',
   `stat_day_pv` int(10) unsigned NOT NULL DEFAULT '0',
   `stat_day_uv` int(10) unsigned NOT NULL DEFAULT '0',
   `stat_day_ip` int(10) unsigned NOT NULL DEFAULT '0',
   `link_id` int(10) unsigned NOT NULL DEFAULT '0',
   `stat_date` date NOT NULL DEFAULT '0000-00-00',
   `stat_time` time NOT NULL DEFAULT '00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -119,7 +119,7 @@ ALTER TABLE `link_record`
 -- Indexes for table `link_stat`
 --
 ALTER TABLE `link_stat`
- ADD PRIMARY KEY (`stat_id`), ADD KEY `link_id` (`link_id`,`stat_date`);
+ ADD PRIMARY KEY (`stat_id`), ADD KEY `link_id` (`link_id`,`stat_type`,`stat_date`);
 
 --
 -- Indexes for table `user_info`
@@ -135,17 +135,17 @@ ALTER TABLE `user_info`
 -- AUTO_INCREMENT for table `link_info`
 --
 ALTER TABLE `link_info`
-MODIFY `link_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `link_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `link_record`
 --
 ALTER TABLE `link_record`
-MODIFY `record_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `record_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `link_stat`
 --
 ALTER TABLE `link_stat`
-MODIFY `stat_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `stat_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `user_info`
 --
