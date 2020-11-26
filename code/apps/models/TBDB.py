@@ -173,7 +173,7 @@ class TBDB(object):
         startTime = arrow.now().shift(minutes=-5).format('YYYY-MM-DD HH:mm:00')
 
         params = {'linkID':linkID, 'start_time':startTime, 'end_time':endTime}
-        sql = "select sum(record_id) as total from link_record where link_id=:linkID and record_ctime >=:start_time and record_ctime <=:end_time"
+        sql = "select count(record_id) as total from link_record where link_id=:linkID and record_ctime >=:start_time and record_ctime <=:end_time"
         rows = self._conn.query(sql, **params)
         row = rows.first(as_dict=True)
         if not row['total']:
@@ -182,7 +182,7 @@ class TBDB(object):
             pv = row['total']
 
         params = {'linkID':linkID, 'start_time':startTime, 'end_time':endTime}
-        sql = "select sum(record_id) as total from link_record where link_id=:linkID and record_ctime >=:start_time and record_ctime <=:end_time group by record_ip"
+        sql = "select count(record_id) as total from link_record where link_id=:linkID and record_ctime >=:start_time and record_ctime <=:end_time group by record_ip"
         rows = self._conn.query(sql, **params)
         row = rows.first(as_dict=True)
         if not row:
@@ -191,7 +191,7 @@ class TBDB(object):
             ip = row['total']
 
         params = {'linkID':linkID, 'start_time':startTime, 'end_time':endTime}
-        sql = "select sum(record_id) as total from link_record where link_id=:linkID and record_ctime >=:start_time and record_ctime <=:end_time and record_uv_status=0"
+        sql = "select count(record_id) as total from link_record where link_id=:linkID and record_ctime >=:start_time and record_ctime <=:end_time and record_uv_status=0"
         rows = self._conn.query(sql, **params)
         row = rows.first(as_dict=True)
         if not row['total']:
@@ -211,7 +211,7 @@ class TBDB(object):
         if limitDate == str(arrow.now().format('YYYY-MM-DD')):
             sql = "select stat_day_pv as pv, stat_day_uv as uv, stat_day_ip as ip, stat_date as date, stat_time as time from link_stat where link_id=:link_id and stat_date=:date order by stat_id desc"
         else:
-            sql = "select sum(stat_day_pv) as pv, sum(stat_day_uv) as uv, sum(stat_day_ip) as ip, stat_date as date, '' as time from link_stat where link_id=:link_id and stat_date>=:date group by stat_date order by stat_date desc"
+            sql = "select sum(stat_day_pv) as pv, count(stat_day_uv) as uv, sum(stat_day_ip) as ip, stat_date as date, '' as time from link_stat where link_id=:link_id and stat_date>=:date group by stat_date order by stat_date desc"
         rows = self._conn.query(sql, **params)
         return rows.all(as_dict=True)
 
@@ -221,9 +221,9 @@ class TBDB(object):
         params = {'link_id':linkID, 'date':limitDate}
 
         if limitDate == str(arrow.now().format('YYYY-MM-DD')):
-            sql = "select record_platform as platform, sum(record_id) as total from link_record where link_id=:link_id and record_date=:date group by record_platform order by total desc"
+            sql = "select record_platform as platform, count(record_id) as total from link_record where link_id=:link_id and record_date=:date group by record_platform order by total desc"
         else:
-            sql = "select record_platform as platform, sum(record_id) as total from link_record where link_id=:link_id and record_date>=:date group by record_platform order by total desc"
+            sql = "select record_platform as platform, count(record_id) as total from link_record where link_id=:link_id and record_date>=:date group by record_platform order by total desc"
         rows = self._conn.query(sql, **params)
         return rows.all(as_dict=True)
 
@@ -232,9 +232,9 @@ class TBDB(object):
         params = {'link_id':linkID, 'date':limitDate}
 
         if limitDate == str(arrow.now().format('YYYY-MM-DD')):
-            sql = "select record_browser as browser, sum(record_id) as total from link_record where link_id=:link_id and record_date=:date group by record_browser order by total desc"
+            sql = "select record_browser as browser, count(record_id) as total from link_record where link_id=:link_id and record_date=:date group by record_browser order by total desc"
         else:
-            sql = "select record_browser as browser, sum(record_id) as total from link_record where link_id=:link_id and record_date>=:date group by record_browser order by total desc"
+            sql = "select record_browser as browser, count(record_id) as total from link_record where link_id=:link_id and record_date>=:date group by record_browser order by total desc"
         rows = self._conn.query(sql, **params)
         return rows.all(as_dict=True)
 
@@ -243,9 +243,9 @@ class TBDB(object):
         params = {'link_id':linkID, 'date':limitDate}
 
         if limitDate == str(arrow.now().format('YYYY-MM-DD')):
-            sql = "select record_province as address, sum(record_id) as total from link_record where link_id=:link_id and record_date=:date group by record_province order by total desc"
+            sql = "select record_province as address, count(record_id) as total from link_record where link_id=:link_id and record_date=:date group by record_province order by total desc"
         else:
-            sql = "select record_province as address, sum(record_id) as total from link_record where link_id=:link_id and record_date>=:date group by record_province order by total desc"
+            sql = "select record_province as address, count(record_id) as total from link_record where link_id=:link_id and record_date>=:date group by record_province order by total desc"
         rows = self._conn.query(sql, **params)
         return rows.all(as_dict=True)
 
