@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-25 21:56:44
+# @Last Modified time: 2020-11-26 11:33:00
 
 from user_agents import parse
 from TBDB import *
@@ -35,6 +35,16 @@ class FrontModel(object):
 
         browser = ua.browser.family.replace('Mobile', '').strip()
         device = ua.device.family
+
+        if uaStr.lower().find('micromessenger') >= 0:
+            browser = '微信'
+        elif uaStr.lower().find('qq') >= 0:
+            if uaStr.lower().find('mqqbrowser') >= 0:
+                browser = 'QQ浏览器'
+            else:
+                browser = 'QQ'
+        elif uaStr.lower().find('alipay') >= 0:
+            browser = '支付宝'
 
         uaType = 0
         if ua.is_mobile:
