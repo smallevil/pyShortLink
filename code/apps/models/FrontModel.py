@@ -2,10 +2,10 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-26 11:33:00
+# @Last Modified time: 2020-11-26 12:37:50
 
 from user_agents import parse
-from TBDB import *
+from .TBDB import TBDB
 
 class FrontModel(object):
     def __init__(self, dbURI):
@@ -45,6 +45,8 @@ class FrontModel(object):
                 browser = 'QQ'
         elif uaStr.lower().find('alipay') >= 0:
             browser = '支付宝'
+        elif uaStr.lower().find('weibo') >= 0:
+            browser = '微博'
 
         uaType = 0
         if ua.is_mobile:

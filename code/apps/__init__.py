@@ -2,12 +2,12 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-24 12:54:04
+# @Last Modified time: 2020-11-26 12:28:01
 
 from flask import Flask
-from views import admin
-from views import front
-from models import AdminModel
+from .views.admin import admin
+from .views.front import front
+from .models.AdminModel import AdminModel
 
 app = Flask(__name__, template_folder='templates', static_folder='static', instance_relative_config=True)
 app.config.from_object('config')

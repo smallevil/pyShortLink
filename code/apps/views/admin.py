@@ -2,12 +2,11 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-26 11:16:05
+# @Last Modified time: 2020-11-26 12:28:39
 
 from flask import Blueprint, render_template, redirect, session, request, current_app
 import functools
 from ..models.AdminModel import AdminModel
-
 import math, urllib, arrow
 
 admin = Blueprint('admin', __name__, url_prefix='/admin')

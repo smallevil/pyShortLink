@@ -2,10 +2,10 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-26 11:13:04
+# @Last Modified time: 2020-11-26 12:37:53
 
 import hashlib
-from TBDB import *
+from .TBDB import TBDB
 
 class AdminModel(object):
     def __init__(self, dbURI):

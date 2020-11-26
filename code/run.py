@@ -2,14 +2,17 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-26 01:40:33
+# @Last Modified time: 2020-11-26 13:06:51
+
 
 from apps import app
 from flask_apscheduler import APScheduler
 import arrow
 from apps.models.AdminModel import AdminModel
 
+
 def statDay():
+    app.logger.info('start stat day')
     model = AdminModel(app.config['DATABASE_URI'])
     model.setStatDay()
 

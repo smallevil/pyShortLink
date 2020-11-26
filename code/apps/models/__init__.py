@@ -2,9 +2,9 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-25 15:07:49
+# @Last Modified time: 2020-11-26 12:26:42
 
-from AdminModel import AdminModel
-from FrontModel import FrontModel
-from ip2Region import Ip2Region
-from TBDB import TBDB
+from . import AdminModel
+from . import FrontModel
+from . import ip2Region
+from . import TBDB

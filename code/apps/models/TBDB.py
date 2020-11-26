@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-26 11:13:37
+# @Last Modified time: 2020-11-26 12:55:22
 
 import records
 from hashids import Hashids
@@ -151,8 +151,15 @@ class TBDB(object):
             return None
 
         country = country.decode('utf-8')
+        if not country:
+            country = ''
         province = province.decode('utf-8')
+        if not province:
+            province = ''
         city = city.decode('utf-8')
+        if not city:
+            city = ''
+
         params = {'link_id':int(linkID), 'ua':str(uaStr), 'uv_status':int(uvStatus), 'ua_type':uaType, 'referrer':str(referrer), 'platform':str(platform), 'browser':str(browser), 'device':str(device),  'ip':str(userIP), 'country':country, 'province':province, 'city':city, 'date':str(arrow.now().format('YYYY-MM-DD')), 'ctime':str(arrow.now().format('YYYY-MM-DD HH:mm:ss'))}
         sql = "insert into link_record (record_ua, record_referer, record_uv_status, record_ip, record_platform, record_browser, record_device, record_ua_type, record_country, record_province, record_city, link_id, record_date, record_ctime) values (:ua, :referrer, :uv_status, :ip, :platform, :browser, :device, :ua_type, :country, :province, :city, :link_id, :date, :ctime)"
         self._conn.query(sql, **params)
@@ -167,28 +174,28 @@ class TBDB(object):
         sql = "select sum(record_id) as total from link_record where link_id=:linkID and record_ctime >=:start_time and record_ctime <=:end_time"
         rows = self._conn.query(sql, **params)
         row = rows.first(as_dict=True)
-        if row['total']:
-            pv = row['total']
-        else:
+        if not row['total']:
             pv = 0
+        else:
+            pv = row['total']
 
         params = {'linkID':linkID, 'start_time':startTime, 'end_time':endTime}
         sql = "select sum(record_id) as total from link_record where link_id=:linkID and record_ctime >=:start_time and record_ctime <=:end_time group by record_ip"
         rows = self._conn.query(sql, **params)
         row = rows.first(as_dict=True)
-        if row:
-            ip = row['total']
-        else:
+        if not row:
             ip = 0
+        else:
+            ip = row['total']
 
         params = {'linkID':linkID, 'start_time':startTime, 'end_time':endTime}
         sql = "select sum(record_id) as total from link_record where link_id=:linkID and record_ctime >=:start_time and record_ctime <=:end_time and record_uv_status=0"
         rows = self._conn.query(sql, **params)
         row = rows.first(as_dict=True)
-        if row['total'] >= 0:
-            uv = row['total']
-        else:
+        if not row['total']:
             uv = 0
+        else:
+            uv = row['total']
 
         params = {'date':arrow.now().format('YYYY-MM-DD'), 'time':str(arrow.now().format('HH:mm:ss')), 'pv':pv, 'uv':uv, 'ip':ip, 'link_id':linkID}
         sql = "insert into link_stat (stat_day_pv, stat_day_uv, stat_day_ip, link_id, stat_date, stat_time) values (:pv, :uv, :ip, :link_id, :date, :time)"
