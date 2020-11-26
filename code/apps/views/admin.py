@@ -2,13 +2,13 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-26 00:46:20
+# @Last Modified time: 2020-11-26 11:16:05
 
 from flask import Blueprint, render_template, redirect, session, request, current_app
 import functools
 from ..models.AdminModel import AdminModel
 
-import math, urllib
+import math, urllib, arrow
 
 admin = Blueprint('admin', __name__, url_prefix='/admin')
 
@@ -180,16 +180,58 @@ def adminUrls(page):
     if page >= maxPage:
         ret['next_page'] = False
 
-    return render_template('/admin/urls.html', tplData=ret)
+    return render_template('/admin/urls.html', tplData=ret, date=(arrow.now().format('YYYYMMDD')))
 
 
+#PV统计
+@admin.route('/statpv/link_id/<int:linkID>/date/<date>', methods=['GET'])
+@isLogin
+def adminStatPV(linkID, date):
+    rets = {'link_id':linkID, 'list':[]}
+    model = AdminModel(current_app.config['DATABASE_URI'])
+    rets['list'] = model.statPV(linkID, date)
+    rets['date'] = str(arrow.now().format('YYYYMMDD'))
+    rets['date7'] = str(arrow.now().shift(days=-1).format('YYYYMMDD'))
+    rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
+    return render_template('/admin/stat_pv.html', tplData=rets)
 
 
+#平台统计
+@admin.route('/statplatform/link_id/<int:linkID>/date/<date>', methods=['GET'])
+@isLogin
+def adminStatPlatform(linkID, date):
+    rets = {'link_id':linkID, 'list':[]}
+    model = AdminModel(current_app.config['DATABASE_URI'])
+    rets['list'] = model.statPlatform(linkID, date)
+    rets['date'] = str(arrow.now().format('YYYYMMDD'))
+    rets['date7'] = str(arrow.now().shift(days=-1).format('YYYYMMDD'))
+    rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
+    return render_template('/admin/stat_platform.html', tplData=rets)
 
 
+#环境统计
+@admin.route('/statbrowser/link_id/<int:linkID>/date/<date>', methods=['GET'])
+@isLogin
+def adminStatBrowser(linkID, date):
+    rets = {'link_id':linkID, 'list':[]}
+    model = AdminModel(current_app.config['DATABASE_URI'])
+    rets['list'] = model.statBrowser(linkID, date)
+    rets['date'] = str(arrow.now().format('YYYYMMDD'))
+    rets['date7'] = str(arrow.now().shift(days=-1).format('YYYYMMDD'))
+    rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
+    return render_template('/admin/stat_browser.html', tplData=rets)
 
-
-
+#环境统计
+@admin.route('/stataddr/link_id/<int:linkID>/date/<date>', methods=['GET'])
+@isLogin
+def adminStatAddr(linkID, date):
+    rets = {'link_id':linkID, 'list':[]}
+    model = AdminModel(current_app.config['DATABASE_URI'])
+    rets['list'] = model.statAddr(linkID, date)
+    rets['date'] = str(arrow.now().format('YYYYMMDD'))
+    rets['date7'] = str(arrow.now().shift(days=-1).format('YYYYMMDD'))
+    rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
+    return render_template('/admin/stat_addr.html', tplData=rets)
 
 
 

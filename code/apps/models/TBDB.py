@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-26 01:40:26
+# @Last Modified time: 2020-11-26 11:13:37
 
 import records
 from hashids import Hashids
@@ -194,6 +194,51 @@ class TBDB(object):
         sql = "insert into link_stat (stat_day_pv, stat_day_uv, stat_day_ip, link_id, stat_date, stat_time) values (:pv, :uv, :ip, :link_id, :date, :time)"
         self._conn.query(sql, **params)
 
+
+    def statPV(self, linkID, date):
+        limitDate = str(arrow.get(date, 'YYYYMMDD').format('YYYY-MM-DD'))
+        params = {'link_id':linkID, 'date':limitDate}
+
+        if limitDate == str(arrow.now().format('YYYY-MM-DD')):
+            sql = "select stat_day_pv as pv, stat_day_uv as uv, stat_day_ip as ip, stat_date as date, stat_time as time from link_stat where link_id=:link_id and stat_date=:date order by stat_id desc"
+        else:
+            sql = "select sum(stat_day_pv) as pv, sum(stat_day_uv) as uv, sum(stat_day_ip) as ip, stat_date as date, '' as time from link_stat where link_id=:link_id and stat_date>=:date group by stat_date order by stat_date desc"
+        rows = self._conn.query(sql, **params)
+        return rows.all(as_dict=True)
+
+
+    def statPlatform(self, linkID, date):
+        limitDate = str(arrow.get(date, 'YYYYMMDD').format('YYYY-MM-DD'))
+        params = {'link_id':linkID, 'date':limitDate}
+
+        if limitDate == str(arrow.now().format('YYYY-MM-DD')):
+            sql = "select record_platform as platform, sum(record_id) as total from link_record where link_id=:link_id and record_date=:date group by record_platform order by total desc"
+        else:
+            sql = "select record_platform as platform, sum(record_id) as total from link_record where link_id=:link_id and record_date>=:date group by record_platform order by total desc"
+        rows = self._conn.query(sql, **params)
+        return rows.all(as_dict=True)
+
+    def statBrowser(self, linkID, date):
+        limitDate = str(arrow.get(date, 'YYYYMMDD').format('YYYY-MM-DD'))
+        params = {'link_id':linkID, 'date':limitDate}
+
+        if limitDate == str(arrow.now().format('YYYY-MM-DD')):
+            sql = "select record_browser as browser, sum(record_id) as total from link_record where link_id=:link_id and record_date=:date group by record_browser order by total desc"
+        else:
+            sql = "select record_browser as browser, sum(record_id) as total from link_record where link_id=:link_id and record_date>=:date group by record_browser order by total desc"
+        rows = self._conn.query(sql, **params)
+        return rows.all(as_dict=True)
+
+    def statAddr(self, linkID, date):
+        limitDate = str(arrow.get(date, 'YYYYMMDD').format('YYYY-MM-DD'))
+        params = {'link_id':linkID, 'date':limitDate}
+
+        if limitDate == str(arrow.now().format('YYYY-MM-DD')):
+            sql = "select record_province as address, sum(record_id) as total from link_record where link_id=:link_id and record_date=:date group by record_province order by total desc"
+        else:
+            sql = "select record_province as address, sum(record_id) as total from link_record where link_id=:link_id and record_date>=:date group by record_province order by total desc"
+        rows = self._conn.query(sql, **params)
+        return rows.all(as_dict=True)
 
 
 

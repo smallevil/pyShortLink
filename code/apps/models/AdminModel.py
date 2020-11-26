@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-26 01:25:08
+# @Last Modified time: 2020-11-26 11:13:04
 
 import hashlib
 from TBDB import *
@@ -90,5 +90,18 @@ class AdminModel(object):
 
             for urlInfo in urls['list']:
                 self._db.statDay(urlInfo['link_id'])
+
+
+    def statPV(self, linkID, date):
+        return self._db.statPV(linkID, date)
+
+    def statPlatform(self, linkID, date):
+        return self._db.statPlatform(linkID, date)
+
+    def statBrowser(self, linkID, date):
+        return self._db.statBrowser(linkID, date)
+
+    def statAddr(self, linkID, date):
+        return self._db.statAddr(linkID, date)
 
 
