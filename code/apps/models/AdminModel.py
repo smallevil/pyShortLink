@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-26 12:37:53
+# @Last Modified time: 2020-11-27 02:26:56
 
 import hashlib
 from .TBDB import TBDB
@@ -78,7 +78,7 @@ class AdminModel(object):
 
 
     #整理统计
-    def setStatDay(self):
+    def setStatDay(self, statType='minute'):
         start = 0
         limit = 10000
         while True:
@@ -89,7 +89,7 @@ class AdminModel(object):
             start = start + limit
 
             for urlInfo in urls['list']:
-                self._db.statDay(urlInfo['link_id'])
+                self._db.statDay(urlInfo['link_id'], statType)
 
 
     def statPV(self, linkID, date):

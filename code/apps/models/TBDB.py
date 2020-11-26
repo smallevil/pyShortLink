@@ -168,9 +168,14 @@ class TBDB(object):
 
 
     #每日统计
-    def statDay(self, linkID):
+    def statDay(self, linkID, statType='minute'):
         endTime = arrow.now().format('YYYY-MM-DD HH:mm:00')
-        startTime = arrow.now().shift(minutes=-5).format('YYYY-MM-DD HH:mm:00')
+        if statType == 'minute':
+            startTime = arrow.now().shift(minutes=-5).format('YYYY-MM-DD HH:mm:00')
+        elif statType == 'day':
+            startTime = arrow.now().shift(days=-1).format('YYYY-MM-DD 00:00:00')
+        else:
+            return None
 
         params = {'linkID':linkID, 'start_time':startTime, 'end_time':endTime}
         sql = "select count(record_id) as total from link_record where link_id=:linkID and record_ctime >=:start_time and record_ctime <=:end_time"
@@ -182,7 +187,7 @@ class TBDB(object):
             pv = row['total']
 
         params = {'linkID':linkID, 'start_time':startTime, 'end_time':endTime}
-        sql = "select count(record_id) as total from link_record where link_id=:linkID and record_ctime >=:start_time and record_ctime <=:end_time group by record_ip"
+        sql = "select count(*) as total from (select * from link_record where link_id=:linkID and record_ctime >=:start_time and record_ctime <=:end_time group by record_ip) as t"
         rows = self._conn.query(sql, **params)
         row = rows.first(as_dict=True)
         if not row:
@@ -199,19 +204,20 @@ class TBDB(object):
         else:
             uv = row['total']
 
-        params = {'date':arrow.now().format('YYYY-MM-DD'), 'time':str(arrow.now().format('HH:mm:ss')), 'pv':pv, 'uv':uv, 'ip':ip, 'link_id':linkID}
-        sql = "insert into link_stat (stat_day_pv, stat_day_uv, stat_day_ip, link_id, stat_date, stat_time) values (:pv, :uv, :ip, :link_id, :date, :time)"
+        params = {'type':statType, 'date':arrow.now().format('YYYY-MM-DD'), 'time':str(arrow.now().format('HH:mm:ss')), 'pv':pv, 'uv':uv, 'ip':ip, 'link_id':linkID}
+        sql = "insert into link_stat (stat_type, stat_day_pv, stat_day_uv, stat_day_ip, link_id, stat_date, stat_time) values (:type, :pv, :uv, :ip, :link_id, :date, :time)"
         self._conn.query(sql, **params)
 
 
     def statPV(self, linkID, date):
         limitDate = str(arrow.get(date, 'YYYYMMDD').format('YYYY-MM-DD'))
-        params = {'link_id':linkID, 'date':limitDate}
 
         if limitDate == str(arrow.now().format('YYYY-MM-DD')):
-            sql = "select stat_day_pv as pv, stat_day_uv as uv, stat_day_ip as ip, stat_date as date, stat_time as time from link_stat where link_id=:link_id and stat_date=:date order by stat_id desc"
+            params = {'link_id':linkID, 'date':limitDate, 'type':'minute'}
+            sql = "select stat_day_pv as pv, stat_day_uv as uv, stat_day_ip as ip, stat_date as date, stat_time as time from link_stat where link_id=:link_id and stat_type=:type and stat_date=:date order by stat_id desc"
         else:
-            sql = "select sum(stat_day_pv) as pv, count(stat_day_uv) as uv, sum(stat_day_ip) as ip, stat_date as date, '' as time from link_stat where link_id=:link_id and stat_date>=:date group by stat_date order by stat_date desc"
+            params = {'link_id':linkID, 'date':limitDate, 'type':'day'}
+            sql = "select stat_day_pv as pv, stat_day_uv as uv, stat_day_ip as ip, stat_date as date, '' as time from link_stat where link_id=:link_id and stat_type=:type and stat_date>=:date order by stat_date desc"
         rows = self._conn.query(sql, **params)
         return rows.all(as_dict=True)
 

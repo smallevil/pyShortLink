@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-26 21:22:53
+# @Last Modified time: 2020-11-27 02:32:24
 
 
 from apps import app
@@ -14,10 +14,16 @@ from gevent.pywsgi import WSGIServer
 from gevent import monkey
 
 
+def statMinute():
+    app.logger.info('start stat minute')
+    model = AdminModel(app.config['DATABASE_URI'])
+    model.setStatDay('minute')
+
 def statDay():
     app.logger.info('start stat day')
     model = AdminModel(app.config['DATABASE_URI'])
-    model.setStatDay()
+    model.setStatDay('day')
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='短链接服务python版')
@@ -27,7 +33,8 @@ if __name__ == '__main__':
 
     scheduler = APScheduler()
     #scheduler.add_job(func=statDay, id='stat_day', trigger='interval', minutes=5)
-    scheduler.add_job(func=statDay, id='stat_day', trigger='cron', minute='0,5,10,15,20,25,30,35,40,45,50,55')
+    scheduler.add_job(func=statMinute, id='stat_minute', trigger='cron', minute='0,5,10,15,20,25,30,35,40,45,50,55')
+    scheduler.add_job(func=statDay, id='stat_day', trigger='cron', hour='0', minute='0', second='0')
     scheduler.start()
 
     if app.config['DEBUG']:
