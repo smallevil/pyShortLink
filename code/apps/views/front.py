@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-26 12:30:02
+# @Last Modified time: 2020-11-26 22:13:22
 
 import arrow, urllib
 import geoip2.database
@@ -76,7 +76,7 @@ def frontIndex(key):
 def getAddressByIP(ip):
     try:
         address = getAddressFromGEO(ip)
-        if address['country'] == '中国':
+        if address['code'] == 'CN':
             address = getAddressFromRegion(ip)
     except:
         address = getAddressFromRegion(ip)
@@ -85,10 +85,11 @@ def getAddressByIP(ip):
 
 
 def getAddressFromGEO(ip):
-    address = {'country':'other', 'province':'other', 'city':'other'}
+    address = {'code':'CN', 'country':'other', 'province':'other', 'city':'other'}
     reader = geoip2.database.Reader(current_app.config['IP_GEO_FILE'])
     geoResult = reader.city(ip)
 
+    address['code'] = geoResult.country.iso_code
     address['country'] = geoResult.country.name
     try:
         address['address'] = geoResult.country.names['zh-CN']

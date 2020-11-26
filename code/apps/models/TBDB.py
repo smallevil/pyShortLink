@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-26 12:55:22
+# @Last Modified time: 2020-11-26 22:06:06
 
 import records
 from hashids import Hashids
@@ -16,6 +16,8 @@ class TBDB(object):
         if dbURI[0:6] == 'sqlite':
             self._dbType = 0
             self._conn = self._db.get_connection()
+        else:
+            self._conn = self._db
 
 
     #根据昵称和密码得到信息

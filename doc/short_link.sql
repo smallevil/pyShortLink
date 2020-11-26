@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 9.9.9.9
--- Generation Time: 2020-11-26 20:28:35
+-- Generation Time: 2020-11-26 22:17:10
 -- 服务器版本： 5.6.17-log
 -- PHP Version: 5.5.11
 
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `link_info` (
 `link_id` int(10) unsigned NOT NULL,
   `link_tag` varchar(10) NOT NULL DEFAULT '',
   `link_domain` varchar(20) NOT NULL DEFAULT '',
-  `link_key` varchar(100) NOT NULL,
+  `link_key` varchar(100) NOT NULL DEFAULT '',
   `link_url` varchar(1024) NOT NULL,
   `link_url_md5` char(32) NOT NULL,
   `link_status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '1:正常 -1:关闭',
