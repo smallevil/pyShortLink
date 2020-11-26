@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-26 12:28:39
+# @Last Modified time: 2020-11-27 01:43:57
 
 from flask import Blueprint, render_template, redirect, session, request, current_app
 import functools
@@ -125,7 +125,7 @@ def adminAdd():
             model = AdminModel(current_app.config['DATABASE_URI'])
             ret = model.addLinkInfo(session.get('uid'), url, domain, tag)
             if ret:
-                return redirect('/admin/stat/' + ret['key'])
+                return redirect('/admin/urls/page/1')
         else:
             return redirect('/error?msg=' + urllib.quote('url和域名必选'))
 
