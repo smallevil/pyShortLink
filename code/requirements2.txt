@@ -1,0 +1,13 @@
+APScheduler
+arrow
+Flask
+Flask-APScheduler
+maxminddb==1.4.1
+geoip2==2.9.0
+hashids
+records
+requests
+ua-parser
+user-agents
+argparse
+gevent

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 9.9.9.9
--- Generation Time: 2020-11-24 04:10:44
+-- Generation Time: 2020-11-26 20:28:35
 -- 服务器版本： 5.6.17-log
 -- PHP Version: 5.5.11
 
@@ -28,11 +28,14 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `link_info` (
 `link_id` int(10) unsigned NOT NULL,
+  `link_tag` varchar(10) NOT NULL DEFAULT '',
+  `link_domain` varchar(20) NOT NULL DEFAULT '',
   `link_key` varchar(100) NOT NULL,
   `link_url` varchar(1024) NOT NULL,
   `link_url_md5` char(32) NOT NULL,
   `link_status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '1:正常 -1:关闭',
-  `user_id` int(10) unsigned NOT NULL DEFAULT '0'
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `link_ctime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -49,10 +52,11 @@ CREATE TABLE IF NOT EXISTS `link_record` (
   `record_ip` varchar(128) NOT NULL DEFAULT '',
   `record_platform` varchar(10) NOT NULL DEFAULT '',
   `record_browser` varchar(20) NOT NULL DEFAULT '',
+  `record_device` varchar(50) NOT NULL DEFAULT '',
+  `record_ua_type` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0:未知 1:Bot  2:PC 3:平板 4:手机',
   `record_country` varchar(50) NOT NULL DEFAULT '',
   `record_province` varchar(50) NOT NULL DEFAULT '',
   `record_city` varchar(50) NOT NULL DEFAULT '',
-  `record_area` varchar(50) NOT NULL DEFAULT '',
   `link_id` int(10) unsigned NOT NULL,
   `record_date` date NOT NULL DEFAULT '0000-00-00',
   `record_ctime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
@@ -103,13 +107,13 @@ INSERT INTO `user_info` (`user_id`, `user_nick`, `user_passwd`, `user_level`, `u
 -- Indexes for table `link_info`
 --
 ALTER TABLE `link_info`
- ADD PRIMARY KEY (`link_id`), ADD UNIQUE KEY `link_key` (`link_key`), ADD UNIQUE KEY `user_id` (`user_id`,`link_url_md5`);
+ ADD PRIMARY KEY (`link_id`), ADD UNIQUE KEY `user_id` (`user_id`,`link_url_md5`), ADD KEY `link_key` (`link_key`);
 
 --
 -- Indexes for table `link_record`
 --
 ALTER TABLE `link_record`
- ADD PRIMARY KEY (`record_id`), ADD KEY `link_id` (`link_id`,`record_date`);
+ ADD PRIMARY KEY (`record_id`), ADD KEY `link_id` (`link_id`,`record_date`,`record_uv_status`);
 
 --
 -- Indexes for table `link_stat`
