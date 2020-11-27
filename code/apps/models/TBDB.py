@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-26 22:06:06
+# @Last Modified time: 2020-11-27 17:28:53
 
 import records
 from hashids import Hashids
@@ -55,7 +55,10 @@ class TBDB(object):
             return None
 
         params = {'key':key}
-        sql = "select * from link_info where link_key=:key"
+        if self._dbType:
+            sql = "select * from link_info where binary link_key=:key"  #mysql默认不区分大小写,这里强制区分
+        else:
+            sql = "select * from link_info where link_key=:key" #sqlite默认已经区分大小写了
         rows = self._conn.query(sql, **params)
         row = rows.first(as_dict=True)
         if row:
@@ -169,11 +172,13 @@ class TBDB(object):
 
     #每日统计
     def statDay(self, linkID, statType='minute'):
-        endTime = arrow.now().format('YYYY-MM-DD HH:mm:00')
+
         if statType == 'minute':
             startTime = arrow.now().shift(minutes=-5).format('YYYY-MM-DD HH:mm:00')
+            endTime = arrow.now().format('YYYY-MM-DD HH:mm:00')
         elif statType == 'day':
             startTime = arrow.now().shift(days=-1).format('YYYY-MM-DD 00:00:00')
+            endTime = arrow.now().shift(days=-1).format('YYYY-MM-DD 23:59:59')
         else:
             return None
 
@@ -204,7 +209,14 @@ class TBDB(object):
         else:
             uv = row['total']
 
-        params = {'type':statType, 'date':arrow.now().format('YYYY-MM-DD'), 'time':str(arrow.now().format('HH:mm:ss')), 'pv':pv, 'uv':uv, 'ip':ip, 'link_id':linkID}
+        if statType == 'minute':
+            date = arrow.now().format('YYYY-MM-DD')
+            time = arrow.now().format('HH:mm:ss')
+        elif statType == 'day':
+            date = arrow.now().shift(days=-1).format('YYYY-MM-DD')
+            time = '23:59:59'
+
+        params = {'type':statType, 'date':date, 'time':time, 'pv':pv, 'uv':uv, 'ip':ip, 'link_id':linkID}
         sql = "insert into link_stat (stat_type, stat_day_pv, stat_day_uv, stat_day_ip, link_id, stat_date, stat_time) values (:type, :pv, :uv, :ip, :link_id, :date, :time)"
         self._conn.query(sql, **params)
 

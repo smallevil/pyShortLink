@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-27 01:43:57
+# @Last Modified time: 2020-11-27 15:37:44
 
 from flask import Blueprint, render_template, redirect, session, request, current_app
 import functools
@@ -189,7 +189,8 @@ def adminStatPV(linkID, date):
     rets = {'link_id':linkID, 'list':[]}
     model = AdminModel(current_app.config['DATABASE_URI'])
     rets['list'] = model.statPV(linkID, date)
-    rets['date'] = str(arrow.now().format('YYYYMMDD'))
+    rets['date'] = date
+    rets['date1'] = str(arrow.now().format('YYYYMMDD'))
     rets['date7'] = str(arrow.now().shift(days=-1).format('YYYYMMDD'))
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
     return render_template('/admin/stat_pv.html', tplData=rets)
@@ -202,7 +203,8 @@ def adminStatPlatform(linkID, date):
     rets = {'link_id':linkID, 'list':[]}
     model = AdminModel(current_app.config['DATABASE_URI'])
     rets['list'] = model.statPlatform(linkID, date)
-    rets['date'] = str(arrow.now().format('YYYYMMDD'))
+    rets['date'] = date
+    rets['date1'] = str(arrow.now().format('YYYYMMDD'))
     rets['date7'] = str(arrow.now().shift(days=-1).format('YYYYMMDD'))
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
     return render_template('/admin/stat_platform.html', tplData=rets)
@@ -215,7 +217,8 @@ def adminStatBrowser(linkID, date):
     rets = {'link_id':linkID, 'list':[]}
     model = AdminModel(current_app.config['DATABASE_URI'])
     rets['list'] = model.statBrowser(linkID, date)
-    rets['date'] = str(arrow.now().format('YYYYMMDD'))
+    rets['date'] = date
+    rets['date1'] = str(arrow.now().format('YYYYMMDD'))
     rets['date7'] = str(arrow.now().shift(days=-1).format('YYYYMMDD'))
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
     return render_template('/admin/stat_browser.html', tplData=rets)
@@ -227,7 +230,8 @@ def adminStatAddr(linkID, date):
     rets = {'link_id':linkID, 'list':[]}
     model = AdminModel(current_app.config['DATABASE_URI'])
     rets['list'] = model.statAddr(linkID, date)
-    rets['date'] = str(arrow.now().format('YYYYMMDD'))
+    rets['date'] = date
+    rets['date1'] = str(arrow.now().format('YYYYMMDD'))
     rets['date7'] = str(arrow.now().shift(days=-1).format('YYYYMMDD'))
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
     return render_template('/admin/stat_addr.html', tplData=rets)

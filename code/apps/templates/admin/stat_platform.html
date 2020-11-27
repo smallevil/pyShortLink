@@ -24,14 +24,14 @@
                 <tr>
                     <td>
                         <div class="ui menu">
-                            <a href="{{ url_for('admin.adminStatPV', linkID=tplData.link_id, date=tplData.date) }}" class="item Disabled">PV统计</a>
-                            <a href="{{ url_for('admin.adminStatPlatform', linkID=tplData.link_id, date=tplData.date) }}" class="item">平台统计</a>
-                            <a href="{{ url_for('admin.adminStatBrowser', linkID=tplData.link_id, date=tplData.date) }}" class="item">环境统计</a>
-                            <a href="{{ url_for('admin.adminStatAddr', linkID=tplData.link_id, date=tplData.date) }}" class="item">地区统计</a>
+                            <a href="{{ url_for('admin.adminStatPV', linkID=tplData.link_id, date=tplData.date1) }}" class="item">PV统计</a>
+                            <a href="{{ url_for('admin.adminStatPlatform', linkID=tplData.link_id, date=tplData.date1) }}" class="item active red">平台统计</a>
+                            <a href="{{ url_for('admin.adminStatBrowser', linkID=tplData.link_id, date=tplData.date1) }}" class="item">环境统计</a>
+                            <a href="{{ url_for('admin.adminStatAddr', linkID=tplData.link_id, date=tplData.date1) }}" class="item">地区统计</a>
                             <div class="right menu">
-                                <a href="{{ url_for('admin.adminStatPlatform', linkID=tplData.link_id, date=tplData.date) }}" class="item">今日</a>
-                                <a href="{{ url_for('admin.adminStatPlatform', linkID=tplData.link_id, date=tplData.date7) }}" class="item">近7天</a>
-                                <a href="{{ url_for('admin.adminStatPlatform', linkID=tplData.link_id, date=tplData.date30) }}" class="item">近30日</a>
+                                <a href="{{ url_for('admin.adminStatPlatform', linkID=tplData.link_id, date=tplData.date1) }}" class="item {% if tplData.date==tplData.date1 %}active red{% endif %}">今日</a>
+                                <a href="{{ url_for('admin.adminStatPlatform', linkID=tplData.link_id, date=tplData.date7) }}" class="item {% if tplData.date==tplData.date7 %}active red{% endif %}">近7天</a>
+                                <a href="{{ url_for('admin.adminStatPlatform', linkID=tplData.link_id, date=tplData.date30) }}" class="item {% if tplData.date==tplData.date30 %}active red{% endif %}">近30日</a>
                             </div>
                         </div>
                     </td>
