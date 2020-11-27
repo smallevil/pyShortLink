@@ -2,12 +2,12 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-27 19:02:18
+# @Last Modified time: 2020-11-27 23:01:38
 
 from flask import Blueprint, render_template, redirect, session, request, current_app
 import functools
 from ..models.AdminModel import AdminModel
-import math, urllib, arrow
+import math, urllib, arrow, json
 
 admin = Blueprint('admin', __name__, url_prefix='/admin')
 
@@ -192,14 +192,25 @@ def adminStatPV(linkID, date):
         return redirect('/error?msg=' + urllib.quote('非法操作'))
 
     rets = {'link_id':linkID, 'list':[]}
-    rets['list'] = model.statPV(linkID, date)
+    #rets['list'] = model.statPV(linkID, date)
     rets['date'] = date
     rets['date1'] = str(arrow.now().format('YYYYMMDD'))
     rets['date7'] = str(arrow.now().shift(days=-1).format('YYYYMMDD'))
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
     rets['urls'] = model.getUrlsByUserID(session['uid'], 0, 10)['list']
     rets['link_info'] = linkInfo
-    return render_template('/admin/stat_pv.html', tplData=rets)
+
+    times = []
+    pvs = []
+    uvs = []
+    ips = []
+    for info in model.statPV(linkID, date):
+        times.append(str(info['time']))
+        pvs.append(int(info['pv']))
+        uvs.append(int(info['uv']))
+        ips.append(int(info['ip']))
+
+    return render_template('/admin/stat_pv.html', tplData=rets, times=times, pvs=pvs, uvs=uvs, ips=ips)
 
 
 #平台统计
@@ -212,14 +223,24 @@ def adminStatPlatform(linkID, date):
         return redirect('/error?msg=' + urllib.quote('非法操作'))
 
     rets = {'link_id':linkID, 'link_info':linkInfo, 'list':[]}
-    rets['list'] = model.statPlatform(linkID, date)
+    #rets['list'] = model.statPlatform(linkID, date)
     rets['date'] = date
     rets['date1'] = str(arrow.now().format('YYYYMMDD'))
     rets['date7'] = str(arrow.now().shift(days=-1).format('YYYYMMDD'))
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
     rets['urls'] = model.getUrlsByUserID(session['uid'], 0, 10)['list']
 
-    return render_template('/admin/stat_platform.html', tplData=rets)
+    charts = {'legend_data':[], 'series_data':[]}
+    for info in model.statPlatform(linkID, date):
+        charts['legend_data'].append(info['platform'] + ': ' + str(info['total']))
+
+        t = {}
+        t['name'] = info['platform'] + ': ' + str(info['total'])
+        t['value'] = info['total']
+        charts['series_data'].append(t)
+        del t
+
+    return render_template('/admin/stat_platform.html', tplData=rets, charts=charts)
 
 
 #环境统计
@@ -232,14 +253,24 @@ def adminStatBrowser(linkID, date):
         return redirect('/error?msg=' + urllib.quote('非法操作'))
 
     rets = {'link_id':linkID, 'link_info':linkInfo, 'list':[]}
-    rets['list'] = model.statBrowser(linkID, date)
+    #rets['list'] = model.statBrowser(linkID, date)
     rets['date'] = date
     rets['date1'] = str(arrow.now().format('YYYYMMDD'))
     rets['date7'] = str(arrow.now().shift(days=-1).format('YYYYMMDD'))
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
     rets['urls'] = model.getUrlsByUserID(session['uid'], 0, 10)['list']
 
-    return render_template('/admin/stat_browser.html', tplData=rets)
+    charts = {'legend_data':[], 'series_data':[]}
+    for info in model.statBrowser(linkID, date):
+        charts['legend_data'].append(info['browser'] + ': ' + str(info['total']))
+
+        t = {}
+        t['name'] = info['browser'] + ': ' + str(info['total'])
+        t['value'] = info['total']
+        charts['series_data'].append(t)
+        del t
+
+    return render_template('/admin/stat_browser.html', tplData=rets, charts=charts)
 
 #环境统计
 @admin.route('/stataddr/link_id/<int:linkID>/date/<date>', methods=['GET'])
@@ -251,14 +282,24 @@ def adminStatAddr(linkID, date):
         return redirect('/error?msg=' + urllib.quote('非法操作'))
 
     rets = {'link_id':linkID, 'link_info':linkInfo, 'list':[]}
-    rets['list'] = model.statAddr(linkID, date)
+    #rets['list'] = model.statAddr(linkID, date)
     rets['date'] = date
     rets['date1'] = str(arrow.now().format('YYYYMMDD'))
     rets['date7'] = str(arrow.now().shift(days=-1).format('YYYYMMDD'))
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
     rets['urls'] = model.getUrlsByUserID(session['uid'], 0, 10)['list']
 
-    return render_template('/admin/stat_addr.html', tplData=rets)
+    charts = {'legend_data':[], 'series_data':[]}
+    for info in model.statAddr(linkID, date):
+        charts['legend_data'].append(info['address'] + ': ' + str(info['total']))
+
+        t = {}
+        t['name'] = info['address'] + ': ' + str(info['total'])
+        t['value'] = info['total']
+        charts['series_data'].append(t)
+        del t
+
+    return render_template('/admin/stat_addr.html', tplData=rets, charts=charts)
 
 
 #历史记录

@@ -12,6 +12,14 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+
 </head>
 
 <body>
@@ -46,6 +54,8 @@
                 </tr>
             </table>
 
+            <div id="container" style="height:500px;"></div>
+            <!--
             <table class="ui celled table">
                 <thead>
                     <tr>
@@ -63,11 +73,14 @@
                     {% endfor %}
                 </tbody>
             </table>
+            -->
         </div>
     <div>
 
 </body>
 <script>
+charts = {{ charts|tojson }};
+
 $(document).ready(function() {
     $('.ui.dropdown').dropdown({
         action: function(text, value) {
@@ -77,7 +90,51 @@ $(document).ready(function() {
           location.href=value;
         }
     });
+
+    showChart();
 });
 
+function showChart()
+{
+    var dom = document.getElementById("container");
+    var myChart = echarts.init(dom);
+    var app = {};
+    option = null;
+
+    option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b} | 占比: {d}%'
+        },
+        legend: {
+            type: 'scroll',
+            orient: 'vertical',
+            right: 10,
+            top: 20,
+            bottom: 20,
+            data: charts.legend_data
+        },
+        series: [
+            {
+                name: '地区',
+                type: 'pie',
+                radius: '55%',
+                center: ['40%', '50%'],
+                data: charts.series_data,
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+    }
+}
 </script>
 </html>

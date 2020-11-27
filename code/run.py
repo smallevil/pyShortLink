@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-27 02:34:56
+# @Last Modified time: 2020-11-27 19:53:02
 
 
 from apps import app
@@ -40,5 +40,5 @@ if __name__ == '__main__':
     if app.config['DEBUG']:
         app.run(host=args.ip, port=args.port)
     else:
-        server  = WSGIServer((args.ip, args.port), app)
+        server = WSGIServer((args.ip, args.port), app)
         server.serve_forever()
