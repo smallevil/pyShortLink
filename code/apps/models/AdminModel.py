@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-27 02:26:56
+# @Last Modified time: 2020-11-27 19:00:27
 
 import hashlib
 from .TBDB import TBDB
@@ -29,6 +29,9 @@ class AdminModel(object):
 
     def getUserInfoByID(self, userID):
         return self._db.getUserInfoByID(userID)
+
+    def getLinkInfoByID(self, linkID):
+        return self._db.getLinkInfoByID(linkID)
 
     #添加短链接
     def addLinkInfo(self, userID, url, domain, tag):
@@ -103,5 +106,8 @@ class AdminModel(object):
 
     def statAddr(self, linkID, date):
         return self._db.statAddr(linkID, date)
+
+    def statViewHistory(self, linkID, date, start, limit):
+        return self._db.statViewHistory(linkID, date, start, limit)
 
 

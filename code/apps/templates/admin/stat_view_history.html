@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Standard Meta -->
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<title>浏览记录</title>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+</head>
+
+<body>
+    {% include '/admin/top_banner.html' %}
+
+    <div class="ui grid equal width aligned padded">
+        {% include '/admin/left_menu.html' %}
+        <div class="thirteen wide column">
+            <table class="ui celled table">
+                <tr>
+                    <td>
+                        <div class="ui menu">
+                            <div class="ui dropdown item">{{ tplData.link_info.link_tag }}<i class="dropdown icon"></i>
+                                <div class="menu">
+                                    {% for info in tplData.urls %}
+                                    <a class="item" data-value="{{ url_for('admin.adminStatViewHistory', linkID=info.link_id, date=tplData.date, page=1) }}">{{ info.link_tag }}</a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <a href="{{ url_for('admin.adminStatPV', linkID=tplData.link_id, date=tplData.date1) }}" class="item">PV统计</a>
+                            <a href="{{ url_for('admin.adminStatPlatform', linkID=tplData.link_id, date=tplData.date1) }}" class="item">平台统计</a>
+                            <a href="{{ url_for('admin.adminStatBrowser', linkID=tplData.link_id, date=tplData.date1) }}" class="item">环境统计</a>
+                            <a href="{{ url_for('admin.adminStatAddr', linkID=tplData.link_id, date=tplData.date1) }}" class="item">地区统计</a>
+                            <a href="{{ url_for('admin.adminStatViewHistory', linkID=tplData.link_id, date=tplData.date1, page=1) }}" class="item active red">浏览记录</a>
+                            <div class="right menu">
+                                <a href="{{ url_for('admin.adminStatViewHistory', linkID=tplData.link_id, date=tplData.date1, page=1) }}" class="item {% if tplData.date==tplData.date1 %}active red{% endif %}">今日</a>
+                                <a href="{{ url_for('admin.adminStatViewHistory', linkID=tplData.link_id, date=tplData.date7, page=1) }}" class="item {% if tplData.date==tplData.date7 %}active red{% endif %}">近7天</a>
+                                <a href="{{ url_for('admin.adminStatViewHistory', linkID=tplData.link_id, date=tplData.date30, page=1) }}" class="item {% if tplData.date==tplData.date30 %}active red{% endif %}">近30日</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <table class="ui celled table">
+                <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>IP</th>
+                        <th>地址</th>
+                        <th>类型</th>
+                        <th>平台</th>
+                        <th>环境</th>
+                        <th>设备</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for info in tplData.list.list %}
+                    <tr class="label" data-title="" data-html="User-Agent:<br />{{ info.record_ua }}<br /><br />Referer:{{ info.record_referer }}">
+                        <td>{{ info.record_ctime }}</td>
+                        <td>
+                            {{ info.record_ip }}
+                        </td>
+                        <td>
+                            {{ info.record_country }}/{{ info.record_province }}/{{ info.record_city }}
+                        </td>
+                        <td>
+                            {% if info.record_ua_type == 1 %}
+                            机器人
+                            {% elif info.record_ua_type == 2 %}
+                            PC
+                            {% elif info.record_ua_type == 3 %}
+                            平板
+                            {% elif info.record_ua_type == 4 %}
+                            手机
+                            {% else %}
+                            未知
+                            {% endif %}
+                        </td>
+                        <td>{{ info.record_platform }}</td>
+                        <td>{{ info.record_browser }}</td>
+                        <td>{{ info.record_device }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+                <tfoot>
+                    <tr><th colspan="7">
+                        <div class="ui right floated pagination menu">
+                            {% if tplData.pre_page %}
+                            <a href="{{ url_for('admin.adminStatViewHistory', linkID=tplData.link_id, date=tplData.date, page=tplData.page-1) }}" class="icon item"><i class="left chevron icon"></i></a>
+                            {% else %}
+                            <a class="icon item disabled"><i class="left chevron icon"></i></a>
+                            {% endif %}
+
+                            {% for page in range(tplData.min_page, tplData.max_page + 1) %}
+                                {% if tplData.page == page %}
+                                <a class="disabled item">{{ page }} / {{ tplData.total_page }}</a>
+                                {% else %}
+                                <a href="{{ url_for('admin.adminStatViewHistory', linkID=tplData.link_id, date=tplData.date, page=page) }}" class="item">{{ page }}</a>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if tplData.next_page %}
+                            <a href="{{ url_for('admin.adminStatViewHistory', linkID=tplData.link_id, date=tplData.date, page=tplData.page+1) }}" class="icon item"><i class="right chevron icon"></i></a>
+                            {% else %}
+                            <a class="icon item disabled"><i class="right chevron icon"></i></a>
+                            {% endif %}
+                        </div>
+                    </th></tr>
+                </tfoot>
+            </table>
+        </div>
+    <div>
+
+</body>
+<script>
+$(document).ready(function() {
+    $('.ui.dropdown').dropdown({
+        action: function(text, value) {
+          // nothing built in occurs
+          //console.log(text);
+          //console.log(value);
+          location.href=value;
+        }
+    });
+
+    $('.label').popup({});  //划过时自动提示
+});
+
+</script>
+</html>

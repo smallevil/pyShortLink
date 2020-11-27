@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-27 17:30:42
+# @Last Modified time: 2020-11-27 18:12:40
 
 import arrow, urllib
 import geoip2.database
@@ -46,8 +46,6 @@ def frontIndex(key):
         return redirect('/error?msg=' + urllib.quote('你所访问的链接有风险'))
 
     url = linkInfo['link_url']
-
-    print(key,linkInfo)
 
     ua = request.headers.get("User-Agent")
     referrer = request.referrer

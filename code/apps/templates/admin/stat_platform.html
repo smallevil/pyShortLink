@@ -24,10 +24,18 @@
                 <tr>
                     <td>
                         <div class="ui menu">
+                            <div class="ui dropdown item">{{ tplData.link_info.link_tag }}<i class="dropdown icon"></i>
+                                <div class="menu">
+                                    {% for info in tplData.urls %}
+                                    <a class="item" data-value="{{ url_for('admin.adminStatPlatform', linkID=info.link_id, date=tplData.date) }}">{{ info.link_tag }}</a>
+                                    {% endfor %}
+                                </div>
+                            </div>
                             <a href="{{ url_for('admin.adminStatPV', linkID=tplData.link_id, date=tplData.date1) }}" class="item">PV统计</a>
                             <a href="{{ url_for('admin.adminStatPlatform', linkID=tplData.link_id, date=tplData.date1) }}" class="item active red">平台统计</a>
                             <a href="{{ url_for('admin.adminStatBrowser', linkID=tplData.link_id, date=tplData.date1) }}" class="item">环境统计</a>
                             <a href="{{ url_for('admin.adminStatAddr', linkID=tplData.link_id, date=tplData.date1) }}" class="item">地区统计</a>
+                            <a href="{{ url_for('admin.adminStatViewHistory', linkID=tplData.link_id, date=tplData.date1, page=1) }}" class="item">浏览记录</a>
                             <div class="right menu">
                                 <a href="{{ url_for('admin.adminStatPlatform', linkID=tplData.link_id, date=tplData.date1) }}" class="item {% if tplData.date==tplData.date1 %}active red{% endif %}">今日</a>
                                 <a href="{{ url_for('admin.adminStatPlatform', linkID=tplData.link_id, date=tplData.date7) }}" class="item {% if tplData.date==tplData.date7 %}active red{% endif %}">近7天</a>
@@ -59,5 +67,17 @@
     <div>
 
 </body>
+<script>
+$(document).ready(function() {
+    $('.ui.dropdown').dropdown({
+        action: function(text, value) {
+          // nothing built in occurs
+          //console.log(text);
+          //console.log(value);
+          location.href=value;
+        }
+    });
+});
 
+</script>
 </html>

@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-27 15:37:44
+# @Last Modified time: 2020-11-27 19:02:18
 
 from flask import Blueprint, render_template, redirect, session, request, current_app
 import functools
@@ -121,13 +121,13 @@ def adminAdd():
 
         domain = request.form.get('domain')
         tag = request.form.get('tag')
-        if url and domain:
+        if url and domain and tag:
             model = AdminModel(current_app.config['DATABASE_URI'])
             ret = model.addLinkInfo(session.get('uid'), url, domain, tag)
             if ret:
                 return redirect('/admin/urls/page/1')
         else:
-            return redirect('/error?msg=' + urllib.quote('url和域名必选'))
+            return redirect('/error?msg=' + urllib.quote('所有选项必填'))
 
         return redirect('/admin/add')
 
@@ -186,13 +186,19 @@ def adminUrls(page):
 @admin.route('/statpv/link_id/<int:linkID>/date/<date>', methods=['GET'])
 @isLogin
 def adminStatPV(linkID, date):
-    rets = {'link_id':linkID, 'list':[]}
     model = AdminModel(current_app.config['DATABASE_URI'])
+    linkInfo = model.getLinkInfoByID(linkID)
+    if linkInfo['user_id'] != session['uid']:
+        return redirect('/error?msg=' + urllib.quote('非法操作'))
+
+    rets = {'link_id':linkID, 'list':[]}
     rets['list'] = model.statPV(linkID, date)
     rets['date'] = date
     rets['date1'] = str(arrow.now().format('YYYYMMDD'))
     rets['date7'] = str(arrow.now().shift(days=-1).format('YYYYMMDD'))
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
+    rets['urls'] = model.getUrlsByUserID(session['uid'], 0, 10)['list']
+    rets['link_info'] = linkInfo
     return render_template('/admin/stat_pv.html', tplData=rets)
 
 
@@ -200,13 +206,19 @@ def adminStatPV(linkID, date):
 @admin.route('/statplatform/link_id/<int:linkID>/date/<date>', methods=['GET'])
 @isLogin
 def adminStatPlatform(linkID, date):
-    rets = {'link_id':linkID, 'list':[]}
     model = AdminModel(current_app.config['DATABASE_URI'])
+    linkInfo = model.getLinkInfoByID(linkID)
+    if linkInfo['user_id'] != session['uid']:
+        return redirect('/error?msg=' + urllib.quote('非法操作'))
+
+    rets = {'link_id':linkID, 'link_info':linkInfo, 'list':[]}
     rets['list'] = model.statPlatform(linkID, date)
     rets['date'] = date
     rets['date1'] = str(arrow.now().format('YYYYMMDD'))
     rets['date7'] = str(arrow.now().shift(days=-1).format('YYYYMMDD'))
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
+    rets['urls'] = model.getUrlsByUserID(session['uid'], 0, 10)['list']
+
     return render_template('/admin/stat_platform.html', tplData=rets)
 
 
@@ -214,27 +226,97 @@ def adminStatPlatform(linkID, date):
 @admin.route('/statbrowser/link_id/<int:linkID>/date/<date>', methods=['GET'])
 @isLogin
 def adminStatBrowser(linkID, date):
-    rets = {'link_id':linkID, 'list':[]}
     model = AdminModel(current_app.config['DATABASE_URI'])
+    linkInfo = model.getLinkInfoByID(linkID)
+    if linkInfo['user_id'] != session['uid']:
+        return redirect('/error?msg=' + urllib.quote('非法操作'))
+
+    rets = {'link_id':linkID, 'link_info':linkInfo, 'list':[]}
     rets['list'] = model.statBrowser(linkID, date)
     rets['date'] = date
     rets['date1'] = str(arrow.now().format('YYYYMMDD'))
     rets['date7'] = str(arrow.now().shift(days=-1).format('YYYYMMDD'))
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
+    rets['urls'] = model.getUrlsByUserID(session['uid'], 0, 10)['list']
+
     return render_template('/admin/stat_browser.html', tplData=rets)
 
 #环境统计
 @admin.route('/stataddr/link_id/<int:linkID>/date/<date>', methods=['GET'])
 @isLogin
 def adminStatAddr(linkID, date):
-    rets = {'link_id':linkID, 'list':[]}
     model = AdminModel(current_app.config['DATABASE_URI'])
+    linkInfo = model.getLinkInfoByID(linkID)
+    if linkInfo['user_id'] != session['uid']:
+        return redirect('/error?msg=' + urllib.quote('非法操作'))
+
+    rets = {'link_id':linkID, 'link_info':linkInfo, 'list':[]}
     rets['list'] = model.statAddr(linkID, date)
     rets['date'] = date
     rets['date1'] = str(arrow.now().format('YYYYMMDD'))
     rets['date7'] = str(arrow.now().shift(days=-1).format('YYYYMMDD'))
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
+    rets['urls'] = model.getUrlsByUserID(session['uid'], 0, 10)['list']
+
     return render_template('/admin/stat_addr.html', tplData=rets)
+
+
+#历史记录
+@admin.route('/statviewhistory/link_id/<int:linkID>/date/<date>/page/<int:page>', methods=['GET'])
+@isLogin
+def adminStatViewHistory(linkID, date, page):
+    model = AdminModel(current_app.config['DATABASE_URI'])
+    linkInfo = model.getLinkInfoByID(linkID)
+    if linkInfo['user_id'] != session['uid']:
+        return redirect('/error?msg=' + urllib.quote('非法操作'))
+
+    if not page:
+        page = 1
+
+    if page < 1:
+        page = 1
+
+    limit = 10
+    start = (page - 1) * limit
+
+    rets = {'link_id':linkID, 'link_info':linkInfo, 'list':[]}
+    rets['list'] = model.statViewHistory(linkID, date, start, limit)
+    rets['date'] = date
+    rets['date1'] = str(arrow.now().format('YYYYMMDD'))
+    rets['date7'] = str(arrow.now().shift(days=-1).format('YYYYMMDD'))
+    rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
+    rets['urls'] = model.getUrlsByUserID(session['uid'], 0, 10)['list']
+
+    #以下简化模板判断
+    totalPage = math.ceil(rets['list']['total'] / (limit * 1.0))
+
+    minPage = page - 2
+    if page - 2 < 1:
+        minPage = 1
+        maxPage = 5
+    else:
+        maxPage = page + 2
+
+    if maxPage > totalPage:
+        maxPage = totalPage
+        minPage = totalPage - 4
+        if minPage < 1:
+            minPage = 1
+
+    rets['min_page'] = int(minPage)
+    rets['max_page'] = int(maxPage)
+    rets['total_page'] = int(totalPage)
+    rets['page'] = page
+
+    rets['pre_page'] = True
+    if page <= minPage:
+        rets['pre_page'] = False
+
+    rets['next_page'] = True
+    if page >= maxPage:
+        rets['next_page'] = False
+
+    return render_template('/admin/stat_view_history.html', tplData=rets)
 
 
 

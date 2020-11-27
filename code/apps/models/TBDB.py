@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-27 17:28:53
+# @Last Modified time: 2020-11-27 18:50:50
 
 import records
 from hashids import Hashids
@@ -59,6 +59,20 @@ class TBDB(object):
             sql = "select * from link_info where binary link_key=:key"  #mysql默认不区分大小写,这里强制区分
         else:
             sql = "select * from link_info where link_key=:key" #sqlite默认已经区分大小写了
+        rows = self._conn.query(sql, **params)
+        row = rows.first(as_dict=True)
+        if row:
+            return row
+        else:
+            return None
+
+    #根据key得到短链信息
+    def getLinkInfoByID(self, linkID):
+        if not linkID:
+            return None
+
+        params = {'id':linkID}
+        sql = "select * from link_info where link_id=:id"
         rows = self._conn.query(sql, **params)
         row = rows.first(as_dict=True)
         if row:
@@ -267,6 +281,25 @@ class TBDB(object):
         rows = self._conn.query(sql, **params)
         return rows.all(as_dict=True)
 
+    def statViewHistory(self, linkID, date, start, limit):
+        limitDate = str(arrow.get(date, 'YYYYMMDD').format('YYYY-MM-DD'))
+        params = {'link_id':linkID, 'date':limitDate, 'start':start, 'limit':limit}
+
+        if self._dbType:
+            sql = "select * from link_record where link_id=:link_id and record_date>=:date order by record_id desc limit :start, :limit"
+        else:
+            sql = "select * from link_record where link_id=:link_id and record_date>=:date order by record_id desc limit :limit offset :start"
+
+        info = {}
+        rows = self._conn.query(sql, **params)
+        info['list'] = rows.all(as_dict=True)
+
+        sql = "select count(*) as total from link_record where link_id=:link_id and record_date>=:date"
+        rows = self._conn.query(sql, **params)
+        row = rows.first(as_dict=True)
+        info['total'] = row['total']
+
+        return info
 
 
 
