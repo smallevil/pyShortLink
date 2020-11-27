@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-27 23:01:38
+# @Last Modified time: 2020-11-28 00:51:43
 
 from flask import Blueprint, render_template, redirect, session, request, current_app
 import functools
@@ -205,7 +205,10 @@ def adminStatPV(linkID, date):
     uvs = []
     ips = []
     for info in model.statPV(linkID, date):
-        times.append(str(info['time']))
+        if date == rets['date1']:
+            times.append(str(info['time']))
+        else:
+            times.append(str(info['date']))
         pvs.append(int(info['pv']))
         uvs.append(int(info['uv']))
         ips.append(int(info['ip']))
