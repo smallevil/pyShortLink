@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-28 18:53:01
+# @Last Modified time: 2020-11-29 00:13:32
 
 from flask import Blueprint, render_template, redirect, session, request, current_app
 import functools
@@ -223,7 +223,7 @@ def adminStatPV(linkID, date):
            timedelta(minutes=5))]
     else:
         limitDates = [str(dt.format('YYYY-MM-DD')) for dt in
-           datetime_range(arrow.get(date, 'YYYYMMDD'), arrow.now().shift(days=-1),
+           datetime_range(arrow.get(date, 'YYYYMMDD'), arrow.now(),
            timedelta(days=1))]
 
     times = []
