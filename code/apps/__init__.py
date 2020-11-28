@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-26 12:28:01
+# @Last Modified time: 2020-11-28 19:19:14
 
 from flask import Flask
 from .views.admin import admin
@@ -14,3 +14,8 @@ app.config.from_object('config')
 app.config.from_pyfile('config.py')
 app.register_blueprint(front)
 app.register_blueprint(admin)
+
+if not app.config['DEBUG']:
+    import logging
+    log = logging.getLogger('werkzeug')
+    log.setLevel(logging.ERROR)
