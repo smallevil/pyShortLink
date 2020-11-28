@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-27 18:50:50
+# @Last Modified time: 2020-11-28 19:06:08
 
 import records
 from hashids import Hashids
@@ -185,14 +185,17 @@ class TBDB(object):
 
 
     #每日统计
-    def statDay(self, linkID, statType='minute'):
+    def statDay(self, linkID, statType='minute', limitDate=None):
+
+        if not limitDate:
+            limitDate = arrow.now()
 
         if statType == 'minute':
-            startTime = arrow.now().shift(minutes=-5).format('YYYY-MM-DD HH:mm:00')
-            endTime = arrow.now().format('YYYY-MM-DD HH:mm:00')
+            startTime = limitDate.shift(minutes=-5).format('YYYY-MM-DD HH:mm:00')
+            endTime = limitDate.format('YYYY-MM-DD HH:mm:00')
         elif statType == 'day':
-            startTime = arrow.now().shift(days=-1).format('YYYY-MM-DD 00:00:00')
-            endTime = arrow.now().shift(days=-1).format('YYYY-MM-DD 23:59:59')
+            startTime = limitDate.shift(days=-1).format('YYYY-MM-DD 00:00:00')
+            endTime = limitDate.shift(days=-1).format('YYYY-MM-DD 23:59:59')
         else:
             return None
 
@@ -223,11 +226,14 @@ class TBDB(object):
         else:
             uv = row['total']
 
+        if pv == 0 and uv == 0 and ip == 0:
+            return None
+
         if statType == 'minute':
-            date = arrow.now().format('YYYY-MM-DD')
-            time = arrow.now().format('HH:mm:ss')
+            date = limitDate.format('YYYY-MM-DD')
+            time = limitDate.format('HH:mm:ss')
         elif statType == 'day':
-            date = arrow.now().shift(days=-1).format('YYYY-MM-DD')
+            date = limitDate.shift(days=-1).format('YYYY-MM-DD')
             time = '23:59:59'
 
         params = {'type':statType, 'date':date, 'time':time, 'pv':pv, 'uv':uv, 'ip':ip, 'link_id':linkID}

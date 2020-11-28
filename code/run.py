@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-27 19:53:02
+# @Last Modified time: 2020-11-28 19:06:55
 
 
 from apps import app
@@ -15,14 +15,14 @@ from gevent import monkey
 
 
 def statMinute():
-    app.logger.info('start stat minute')
+    #app.logger.info('start stat minute')
     model = AdminModel(app.config['DATABASE_URI'])
-    model.setStatDay('minute')
+    model.setStatDay('minute', arrow.now())
 
 def statDay():
-    app.logger.info('start stat day')
+    #app.logger.info('start stat day')
     model = AdminModel(app.config['DATABASE_URI'])
-    model.setStatDay('day')
+    model.setStatDay('day', arrow.now())
 
 
 if __name__ == '__main__':

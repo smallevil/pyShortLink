@@ -2,12 +2,13 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-28 16:52:53
+# @Last Modified time: 2020-11-28 18:53:01
 
 from flask import Blueprint, render_template, redirect, session, request, current_app
 import functools
 from ..models.AdminModel import AdminModel
 import math, urllib, arrow, json
+from datetime import timedelta
 
 admin = Blueprint('admin', __name__, url_prefix='/admin')
 
@@ -195,23 +196,51 @@ def adminStatPV(linkID, date):
     #rets['list'] = model.statPV(linkID, date)
     rets['date'] = date
     rets['date1'] = str(arrow.now().format('YYYYMMDD'))
-    rets['date7'] = str(arrow.now().shift(days=-1).format('YYYYMMDD'))
+    rets['date7'] = str(arrow.now().shift(days=-7).format('YYYYMMDD'))
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
     rets['urls'] = model.getUrlsByUserID(session['uid'], 0, 10)['list']
     rets['link_info'] = linkInfo
+
+    datas = {}
+    for info in model.statPV(linkID, date):
+        if date == rets['date1']:
+            t = str(info['time'])
+        else:
+            t = str(info['date'])
+
+        datas[t] = {'pv': int(info['pv']), 'uv':int(info['uv']), 'ip':int(info['ip'])}
+
+
+    def datetime_range(start, end, delta):
+        current = start
+        while current < end:
+            yield current
+            current += delta
+
+    if date == rets['date1']:
+        limitDates = [dt.format('HH:mm:ss') for dt in
+           datetime_range(arrow.now().floor('day'), arrow.now().ceil('day'),
+           timedelta(minutes=5))]
+    else:
+        limitDates = [str(dt.format('YYYY-MM-DD')) for dt in
+           datetime_range(arrow.get(date, 'YYYYMMDD'), arrow.now().shift(days=-1),
+           timedelta(days=1))]
 
     times = []
     pvs = []
     uvs = []
     ips = []
-    for info in model.statPV(linkID, date)[::-1]:
-        if date == rets['date1']:
-            times.append(str(info['time']))
+
+    for cTime in limitDates:
+        times.append(cTime)
+        if cTime in datas.keys():
+            pvs.append(datas[cTime]['pv'])
+            uvs.append(datas[cTime]['uv'])
+            ips.append(datas[cTime]['ip'])
         else:
-            times.append(str(info['date']))
-        pvs.append(int(info['pv']))
-        uvs.append(int(info['uv']))
-        ips.append(int(info['ip']))
+            pvs.append(0)
+            uvs.append(0)
+            ips.append(0)
 
     return render_template('/admin/stat_pv.html', tplData=rets, times=times, pvs=pvs, uvs=uvs, ips=ips)
 
@@ -229,7 +258,7 @@ def adminStatPlatform(linkID, date):
     #rets['list'] = model.statPlatform(linkID, date)
     rets['date'] = date
     rets['date1'] = str(arrow.now().format('YYYYMMDD'))
-    rets['date7'] = str(arrow.now().shift(days=-1).format('YYYYMMDD'))
+    rets['date7'] = str(arrow.now().shift(days=-7).format('YYYYMMDD'))
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
     rets['urls'] = model.getUrlsByUserID(session['uid'], 0, 10)['list']
 
@@ -259,7 +288,7 @@ def adminStatBrowser(linkID, date):
     #rets['list'] = model.statBrowser(linkID, date)
     rets['date'] = date
     rets['date1'] = str(arrow.now().format('YYYYMMDD'))
-    rets['date7'] = str(arrow.now().shift(days=-1).format('YYYYMMDD'))
+    rets['date7'] = str(arrow.now().shift(days=-7).format('YYYYMMDD'))
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
     rets['urls'] = model.getUrlsByUserID(session['uid'], 0, 10)['list']
 
@@ -288,7 +317,7 @@ def adminStatAddr(linkID, date):
     #rets['list'] = model.statAddr(linkID, date)
     rets['date'] = date
     rets['date1'] = str(arrow.now().format('YYYYMMDD'))
-    rets['date7'] = str(arrow.now().shift(days=-1).format('YYYYMMDD'))
+    rets['date7'] = str(arrow.now().shift(days=-7).format('YYYYMMDD'))
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
     rets['urls'] = model.getUrlsByUserID(session['uid'], 0, 10)['list']
 
@@ -327,7 +356,7 @@ def adminStatViewHistory(linkID, date, page):
     rets['list'] = model.statViewHistory(linkID, date, start, limit)
     rets['date'] = date
     rets['date1'] = str(arrow.now().format('YYYYMMDD'))
-    rets['date7'] = str(arrow.now().shift(days=-1).format('YYYYMMDD'))
+    rets['date7'] = str(arrow.now().shift(days=-7).format('YYYYMMDD'))
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
     rets['urls'] = model.getUrlsByUserID(session['uid'], 0, 10)['list']
 
@@ -361,6 +390,4 @@ def adminStatViewHistory(linkID, date, page):
         rets['next_page'] = False
 
     return render_template('/admin/stat_view_history.html', tplData=rets)
-
-
 
