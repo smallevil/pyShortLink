@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-28 00:51:43
+# @Last Modified time: 2020-11-28 16:52:53
 
 from flask import Blueprint, render_template, redirect, session, request, current_app
 import functools
@@ -204,7 +204,7 @@ def adminStatPV(linkID, date):
     pvs = []
     uvs = []
     ips = []
-    for info in model.statPV(linkID, date):
+    for info in model.statPV(linkID, date)[::-1]:
         if date == rets['date1']:
             times.append(str(info['time']))
         else:
