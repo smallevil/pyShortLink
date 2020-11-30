@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-30 12:18:39
+# @Last Modified time: 2020-11-30 21:17:11
 
 import arrow, urllib
 from flask import Blueprint, render_template, redirect, session, request, make_response, current_app
@@ -41,7 +41,6 @@ def shareStatPV(key, date):
     rets['date1'] = str(arrow.now().format('YYYYMMDD'))
     rets['date7'] = str(arrow.now().shift(days=-7).format('YYYYMMDD'))
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
-    rets['urls'] = model.getUrlsByUserID(session['uid'], 0, 10)['list']
     rets['link_info'] = linkInfo
 
     datas = {}
@@ -114,7 +113,6 @@ def shareStatPlatform(key, date):
     rets['date1'] = str(arrow.now().format('YYYYMMDD'))
     rets['date7'] = str(arrow.now().shift(days=-7).format('YYYYMMDD'))
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
-    rets['urls'] = model.getUrlsByUserID(session['uid'], 0, 10)['list']
 
     charts = {'legend_data':[], 'series_data':[]}
     for info in model.statPlatform(linkID, date):
@@ -155,7 +153,6 @@ def shareStatBrowser(key, date):
     rets['date1'] = str(arrow.now().format('YYYYMMDD'))
     rets['date7'] = str(arrow.now().shift(days=-7).format('YYYYMMDD'))
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
-    rets['urls'] = model.getUrlsByUserID(session['uid'], 0, 10)['list']
 
     charts = {'legend_data':[], 'series_data':[]}
     for info in model.statBrowser(linkID, date):
@@ -196,7 +193,6 @@ def shareStatAddr(key, date):
     rets['date1'] = str(arrow.now().format('YYYYMMDD'))
     rets['date7'] = str(arrow.now().shift(days=-7).format('YYYYMMDD'))
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
-    rets['urls'] = model.getUrlsByUserID(session['uid'], 0, 10)['list']
 
     charts = {'legend_data':[], 'series_data':[]}
     for info in model.statAddr(linkID, date):
