@@ -25,7 +25,7 @@
                     <form class="ui large form" method="post">
                         <div class="field">
                             <label>标签</label>
-                            <input type="text" name="tag" placeholder="标签(10字以内),必填">
+                            <input type="text" name="tag" placeholder="标签(20字以内),必填">
 
                             <label>输入完整url</label>
                             <input type="text" name="url" placeholder="完整url">
@@ -55,8 +55,22 @@
 </body>
 <script>
     $(document).ready(function() {
-        $('.ui.radio.checkbox')
-            .checkbox();
+        $('.ui.radio.checkbox').checkbox();
     });
+
+    $('.ui.form').form({
+        fields: {
+            tag:{
+                identifier: 'tag',
+                rules:[
+                    {
+                        type   : 'empty',
+                        prompt : 'Please enter your name'
+                    }
+                ]
+            }
+        }
+    });
+
 </script>
 </html>
