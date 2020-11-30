@@ -2,15 +2,16 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-29 00:13:32
+# @Last Modified time: 2020-11-30 11:09:50
 
 from flask import Blueprint, render_template, redirect, session, request, current_app
 import functools
 from ..models.AdminModel import AdminModel
 import math, urllib, arrow, json
 from datetime import timedelta
+from hashids import Hashids
 
-admin = Blueprint('admin', __name__, url_prefix='/admin')
+admin = Blueprint('admin', __name__, url_prefix='/a')
 
 def isLogin(func):
     @functools.wraps(func) # 修饰内层函数，防止当前装饰器去修改被装饰函数的属性
@@ -20,7 +21,7 @@ def isLogin(func):
         un = session.get('un')
         level = session.get('level')
         if not uid or not un or not level:
-            return redirect('/admin/login') #没有登录就跳转到登录路由下
+            return redirect('/a/login') #没有登录就跳转到登录路由下
         else:
             # 已经登录的话 g变量保存用户信息，相当于flask程序的全局变量
             return func(*args, **kwargs)
@@ -35,7 +36,7 @@ def adminLogin():
         nick = request.form.get('nick')
         passwd = request.form.get('passwd')
         if not nick or not passwd:
-            return redirect('/admin/login')
+            return redirect('/a/login')
 
         model = AdminModel(current_app.config['DATABASE_URI'])
         userInfo = model.adminLogin(nick, passwd)
@@ -43,9 +44,9 @@ def adminLogin():
             session['uid'] = userInfo['id']
             session['un'] = userInfo['nick']
             session['level'] = userInfo['level']
-            return redirect('/admin/main')
+            return redirect('/a/main')
         else:
-            return redirect('/admin/login')
+            return redirect('/a/login')
 
 
     return render_template('/admin/login.html')
@@ -55,7 +56,7 @@ def adminLogin():
 @admin.route('/', methods=['GET'])
 @isLogin
 def adminIndex():
-    return redirect('/admin/main')
+    return redirect('/a/main')
 
 
 #后台首页
@@ -73,7 +74,7 @@ def adminError():
 @isLogin
 def adminLogout():
     session.clear()
-    return redirect('/admin/')
+    return redirect('/a/')
 
 
 #后台欢迎页
@@ -92,24 +93,55 @@ def adminProfile():
         renewPasswd = request.form.get('renew_passwd')
 
         if newPasswd != renewPasswd:
-            return redirect('/error?msg=' + urllib.quote('两次输入密码不一样'))
+            return redirect('/a/error?msg=' + urllib.quote('两次输入密码不一样'))
 
         if oldPasswd == newPasswd:
-            return redirect('/error?msg=' + urllib.quote('新密码不能与老密码相同'))
+            return redirect('/a/error?msg=' + urllib.quote('新密码不能与老密码相同'))
 
         model = AdminModel(current_app.config['DATABASE_URI'])
         userInfo = model.getUserInfoByID(session['uid'])
         if not userInfo:
             session.clear()
-            return redirect('/error?msg=' + urllib.quote('异常退出'))
+            return redirect('/a/error?msg=' + urllib.quote('异常退出'))
 
         if model.md5(oldPasswd) != userInfo['user_passwd']:
-            return redirect('/error?msg=' + urllib.quote('旧密码错误'))
+            return redirect('/a/error?msg=' + urllib.quote('旧密码错误'))
 
         model.getDB().updateUserPasswd(session['uid'], model.md5(newPasswd))
-        return redirect('/admin/logout')
+        return redirect('/a/logout')
     else:
         return render_template('/admin/profile.html')
+
+#分享链接
+@admin.route('/setshareurl', methods=['POST'])
+def adminSetShareUrl():
+    ret = {'errno':0, 'error':''}
+
+    if not session.get('uid') or not session.get('un') or not session.get('level'):
+        ret['errno'] = 1
+        ret['error'] = '未登录'
+        return json.dumps(ret)
+
+
+    linkID = request.form.get('link_id')
+    limitDate = request.form.get('limit_date')
+
+    try:
+        if arrow.get(limitDate, 'YYYY-MM-DD').timestamp < arrow.now().timestamp:
+            ret['errno'] = 2
+            ret['error'] = '日期必须大于当天'
+            return json.dumps(ret)
+    except:
+        ret['errno'] = 2
+        ret['error'] = '日期出错'
+        return json.dumps(ret)
+
+
+    hashids = Hashids(min_length=8, salt=current_app.config['SHARE_URL_SALT'])
+    shareKey = hashids.encode(int(linkID), int(limitDate.replace('-', '')))
+    ret['key'] = shareKey
+    return json.dumps(ret)
+
 
 #添加短链
 @admin.route('/add', methods=['GET', 'POST'])
@@ -126,11 +158,11 @@ def adminAdd():
             model = AdminModel(current_app.config['DATABASE_URI'])
             ret = model.addLinkInfo(session.get('uid'), url, domain, tag)
             if ret:
-                return redirect('/admin/urls/page/1')
+                return redirect('/a/urls/page/1')
         else:
-            return redirect('/error?msg=' + urllib.quote('所有选项必填'))
+            return redirect('/a/error?msg=' + urllib.quote('所有选项必填'))
 
-        return redirect('/admin/add')
+        return redirect('/a/add')
 
     return render_template('/admin/add.html')
 
@@ -190,7 +222,7 @@ def adminStatPV(linkID, date):
     model = AdminModel(current_app.config['DATABASE_URI'])
     linkInfo = model.getLinkInfoByID(linkID)
     if linkInfo['user_id'] != session['uid']:
-        return redirect('/error?msg=' + urllib.quote('非法操作'))
+        return redirect('/a/error?msg=' + urllib.quote('非法操作'))
 
     rets = {'link_id':linkID, 'list':[]}
     #rets['list'] = model.statPV(linkID, date)
@@ -252,7 +284,7 @@ def adminStatPlatform(linkID, date):
     model = AdminModel(current_app.config['DATABASE_URI'])
     linkInfo = model.getLinkInfoByID(linkID)
     if linkInfo['user_id'] != session['uid']:
-        return redirect('/error?msg=' + urllib.quote('非法操作'))
+        return redirect('/a/error?msg=' + urllib.quote('非法操作'))
 
     rets = {'link_id':linkID, 'link_info':linkInfo, 'list':[]}
     #rets['list'] = model.statPlatform(linkID, date)
@@ -282,7 +314,7 @@ def adminStatBrowser(linkID, date):
     model = AdminModel(current_app.config['DATABASE_URI'])
     linkInfo = model.getLinkInfoByID(linkID)
     if linkInfo['user_id'] != session['uid']:
-        return redirect('/error?msg=' + urllib.quote('非法操作'))
+        return redirect('/a/error?msg=' + urllib.quote('非法操作'))
 
     rets = {'link_id':linkID, 'link_info':linkInfo, 'list':[]}
     #rets['list'] = model.statBrowser(linkID, date)
@@ -311,7 +343,7 @@ def adminStatAddr(linkID, date):
     model = AdminModel(current_app.config['DATABASE_URI'])
     linkInfo = model.getLinkInfoByID(linkID)
     if linkInfo['user_id'] != session['uid']:
-        return redirect('/error?msg=' + urllib.quote('非法操作'))
+        return redirect('/a/error?msg=' + urllib.quote('非法操作'))
 
     rets = {'link_id':linkID, 'link_info':linkInfo, 'list':[]}
     #rets['list'] = model.statAddr(linkID, date)
@@ -341,7 +373,7 @@ def adminStatViewHistory(linkID, date, page):
     model = AdminModel(current_app.config['DATABASE_URI'])
     linkInfo = model.getLinkInfoByID(linkID)
     if linkInfo['user_id'] != session['uid']:
-        return redirect('/error?msg=' + urllib.quote('非法操作'))
+        return redirect('/a/error?msg=' + urllib.quote('非法操作'))
 
     if not page:
         page = 1

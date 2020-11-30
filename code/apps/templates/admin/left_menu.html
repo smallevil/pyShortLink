@@ -3,13 +3,13 @@
                 <div class="item">
                     <div class="header">短链接</div>
                     <div class="menu">
-                        {% if request.path == '/admin/add' %}
+                        {% if request.path == '/a/add' %}
                         <a href="{{ url_for('admin.adminAdd') }}" class="item active red">新建短链接</a>
                         {% else %}
                         <a href="{{ url_for('admin.adminAdd') }}" class="item">新建短链接</a>
                         {% endif %}
 
-                        {% if request.path.find('/admin/urls') >= 0 %}
+                        {% if request.path.find('/a/urls') >= 0 %}
                         <a href="{{ url_for('admin.adminUrls', page=1) }}" class="item active red">我的短链接</a>
                         {% else %}
                         <a href="{{ url_for('admin.adminUrls', page=1) }}" class="item">我的短链接</a>
@@ -20,10 +20,10 @@
                 <div class="item">
                     <div class="header">账户管理</div>
                     <div class="menu">
-                        {% if request.path == '/admin/profile' %}
-                        <a href="/admin/profile" class="item active red">个人中心</a>
+                        {% if request.path == '/a/profile' %}
+                        <a href="{{ url_for('admin.adminProfile') }}" class="item active red">个人中心</a>
                         {% else %}
-                        <a href="/admin/profile" class="item">个人中心</a>
+                        <a href="{{ url_for('admin.adminProfile') }}" class="item">个人中心</a>
                         {% endif %}
 
                         <a href="{{ url_for('admin.adminLogout') }}" class="item">退出</a>

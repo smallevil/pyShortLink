@@ -1,0 +1,16 @@
+2020-11-28 19:27:43:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-11-28 19:27:43:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-11-28 19:27:43:apscheduler.scheduler:INFO:881:Added job "stat_minute" to job store "default"
+2020-11-28 19:27:43:apscheduler.scheduler:INFO:881:Added job "stat_day" to job store "default"
+2020-11-28 19:27:43:apscheduler.scheduler:INFO:166:Scheduler started
+2020-11-28 19:27:43:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-11-28 19:27:43:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-11-28 19:30:00+08:00 (in 136.199241 seconds)
+2020-11-28 19:27:43:werkzeug:WARNING:88: * Debugger is active!
+2020-11-28 19:27:43:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-11-28 19:27:52:werkzeug:INFO:88:127.0.0.1 - - [28/Nov/2020 19:27:52] "GET /admin/main HTTP/1.1" 200 -
+2020-11-28 19:27:52:werkzeug:INFO:88:127.0.0.1 - - [28/Nov/2020 19:27:52] "GET /favicon.ico HTTP/1.1" 200 -
+2020-11-28 19:30:00:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-11-28 19:30:00:apscheduler.executors.default:INFO:123:Running job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-11-28 19:30:00 CST)" (scheduled at 2020-11-28 19:30:00+08:00)
+2020-11-28 19:30:00:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-11-28 19:35:00+08:00 (in 299.995843 seconds)
+2020-11-28 19:30:00:apps:INFO:18:start stat minute
+2020-11-28 19:30:00:apscheduler.executors.default:INFO:144:Job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-11-28 19:35:00 CST)" executed successfully
