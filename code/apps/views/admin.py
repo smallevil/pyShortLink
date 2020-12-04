@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-30 11:09:50
+# @Last Modified time: 2020-12-04 16:00:09
 
 from flask import Blueprint, render_template, redirect, session, request, current_app
 import functools
@@ -355,10 +355,14 @@ def adminStatAddr(linkID, date):
 
     charts = {'legend_data':[], 'series_data':[]}
     for info in model.statAddr(linkID, date):
-        charts['legend_data'].append(info['address'] + ': ' + str(info['total']))
+
+        address = '未知'
+        if len(info['address']) > 0:
+            address = info['address']
+        charts['legend_data'].append(address + ': ' + str(info['total']))
 
         t = {}
-        t['name'] = info['address'] + ': ' + str(info['total'])
+        t['name'] = address + ': ' + str(info['total'])
         t['value'] = info['total']
         charts['series_data'].append(t)
         del t

@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-30 11:37:59
+# @Last Modified time: 2020-12-02 13:34:28
 
 from flask import Flask
 from .views.share import share
@@ -33,4 +33,4 @@ if app.config['DEBUG']:
     chlr.setFormatter(formatter)
     logger.addHandler(chlr)
 else:
-    logger.setLevel(logging.ERROR)
+    logger.setLevel(logging.INFO)

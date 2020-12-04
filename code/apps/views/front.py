@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-27 18:12:40
+# @Last Modified time: 2020-12-04 15:53:23
 
 import arrow, urllib
 import geoip2.database
@@ -80,6 +80,13 @@ def getAddressByIP(ip):
             address = getAddressFromRegion(ip)
     except:
         address = getAddressFromRegion(ip)
+
+    if str(address['province']) == '0':
+        address['province'] = ''
+        address['city'] = ''
+
+    if str(address['city']) == '0':
+        address['city'] = ''
 
     return address
 

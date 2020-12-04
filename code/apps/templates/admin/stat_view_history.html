@@ -67,7 +67,15 @@
                             {{ info.record_ip }}
                         </td>
                         <td>
-                            {{ info.record_country }}/{{ info.record_province }}/{{ info.record_city }}
+                            {{ info.record_country }}
+
+                            {% if info.record_province|length > 0 %}
+                            /{{ info.record_province }}
+                            {% endif %}
+
+                            {% if info.record_city|length > 0 %}
+                            /{{ info.record_city }}
+                            {% endif %}
                         </td>
                         <td>
                             {% if info.record_ua_type == 1 %}
