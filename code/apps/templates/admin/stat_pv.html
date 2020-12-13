@@ -32,6 +32,7 @@
                 <tr>
                     <td>
                         <div class="ui menu">
+                            <a class="item" href="javascript:void(0)" id="share" link_id={{ tplData.link_info.link_id }}><i class="share alternate square icon large"></i></a>
                             <div class="ui dropdown item">{{ tplData.link_info.link_tag }}<i class="dropdown icon"></i>
                                 <div class="menu">
                                     {% for info in tplData.urls %}
@@ -53,6 +54,23 @@
                     </td>
                 </tr>
             </table>
+
+            <div class="ui tiny modal">
+                <div class="header">共享此统计数据</div>
+                <div class="content">
+                    <form class="ui form">
+                        <div class="inline field">
+                            <label>过期时间:</label>
+                            <input id="share_limit_date" type="text" name="limit_date" placeholder="过期时间" value="9999-12-31">
+                        </div>
+                    </form>
+                    <div id="share_url"></div>
+                </div>
+                <div class="actions">
+                    <div id="set_share_button" class="ui button blue">设置</div>
+                    <div class="ui cancel button">关闭</div>
+                </div>
+            </div>
 
             <div id="container" style="height:500px;"></div>
             <!--
@@ -99,8 +117,35 @@ $(document).ready(function() {
         }
     });
 
+    $("[id=share]").click(function(){
+        linkID = $(this).attr('link_id');
+        $('#share_url').html('');
+        $('.tiny.modal').modal('show');
+    });
+
+    $("#set_share_button").click(function(){
+        limitDate = $("#share_limit_date").val();
+        getShareUrl(linkID, limitDate);
+    });
+
     showChart();
 });
+
+function getShareUrl(linkID, limitDate)
+{
+    $('#share_url').html('');
+    $.post("/a/setshareurl", {'link_id':linkID, 'limit_date':limitDate}, function(data){
+        if(data.errno > 0)
+        {
+            $('#share_url').html(data.error);
+        }
+        else
+        {
+            shareUrl = '{{ request.host_url }}s/statpv/key/' + data['key'];
+            $('#share_url').html(shareUrl);
+        }
+    }, 'json');
+}
 
 function showChart()
 {
