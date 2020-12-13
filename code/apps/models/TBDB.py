@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-11-28 19:06:08
+# @Last Modified time: 2020-12-13 22:02:15
 
 import records
 from hashids import Hashids
@@ -196,6 +196,9 @@ class TBDB(object):
         elif statType == 'day':
             startTime = limitDate.shift(days=-1).format('YYYY-MM-DD 00:00:00')
             endTime = limitDate.shift(days=-1).format('YYYY-MM-DD 23:59:59')
+        elif statType == 'hour':
+            startTime = limitDate.format('YYYY-MM-DD 00:00:00')
+            endTime = limitDate.shift(hours=-1).format('YYYY-MM-DD HH:59:59')
         else:
             return None
 
@@ -235,10 +238,28 @@ class TBDB(object):
         elif statType == 'day':
             date = limitDate.shift(days=-1).format('YYYY-MM-DD')
             time = '23:59:59'
+        elif statType == 'hour':
+            date = limitDate.shift(hours=-1).format('YYYY-MM-DD')
+            time = limitDate.format('HH:59:59')
+
+        if statType == 'hour':
+            statType = 'day'
 
         params = {'type':statType, 'date':date, 'time':time, 'pv':pv, 'uv':uv, 'ip':ip, 'link_id':linkID}
-        sql = "insert into link_stat (stat_type, stat_day_pv, stat_day_uv, stat_day_ip, link_id, stat_date, stat_time) values (:type, :pv, :uv, :ip, :link_id, :date, :time)"
-        self._conn.query(sql, **params)
+        if statType == 'day':
+            sql = "select * from link_stat where link_id=:link_id and stat_type=:type and stat_date=:date"
+            rows = self._conn.query(sql, **params)
+            row = rows.first(as_dict=True)
+            if row:
+                params['stat_id'] = row['stat_id']
+                sql = "update link_stat set stat_day_pv=:pv, stat_day_uv=:uv, stat_day_ip=:ip, stat_time=:time where stat_id=:stat_id"
+                self._conn.query(sql, **params)
+            else:
+                sql = "insert into link_stat (stat_type, stat_day_pv, stat_day_uv, stat_day_ip, link_id, stat_date, stat_time) values (:type, :pv, :uv, :ip, :link_id, :date, :time)"
+                self._conn.query(sql, **params)
+        else:
+            sql = "insert into link_stat (stat_type, stat_day_pv, stat_day_uv, stat_day_ip, link_id, stat_date, stat_time) values (:type, :pv, :uv, :ip, :link_id, :date, :time)"
+            self._conn.query(sql, **params)
 
 
     def statPV(self, linkID, date):
