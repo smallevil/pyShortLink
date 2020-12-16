@@ -36,7 +36,11 @@
                             <div class="ui dropdown item">{{ tplData.link_info.link_tag }}<i class="dropdown icon"></i>
                                 <div class="menu">
                                     {% for info in tplData.urls %}
-                                    <a class="item" data-value="{{ url_for('admin.adminStatPV', linkID=info.link_id, date=tplData.date) }}">{{ info.link_tag }}</a>
+                                        {% if tplData.link_id == info.link_id %}
+                                        <a class="active item" data-value="{{ url_for('admin.adminStatPV', linkID=info.link_id, date=tplData.date) }}">{{ info.link_tag }}</a>
+                                        {% else %}
+                                        <a class="item" data-value="{{ url_for('admin.adminStatPV', linkID=info.link_id, date=tplData.date) }}">{{ info.link_tag }}</a>
+                                        {% endif %}
                                     {% endfor %}
                                 </div>
                             </div>
