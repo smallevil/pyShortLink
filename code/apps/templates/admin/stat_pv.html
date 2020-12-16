@@ -179,35 +179,26 @@ function showChart()
             {
                 name: 'PV',
                 type: 'line',
-                data: pvs,
-                markPoint: {
-                    data: [
-                        {type: 'max', name: '最大值'},
-                        {type: 'min', name: '最小值'}
-                    ]
-                }
+                smooth: true,
+                symbol: 'circle',
+                symbolSize: 8,
+                data: pvs
             },
             {
                 name: 'UV',
                 type: 'line',
-                data: uvs,
-                markPoint: {
-                    data: [
-                        {type: 'max', name: '最大值'},
-                        {type: 'min', name: '最小值'}
-                    ]
-                }
+                smooth: true,
+                symbol: 'circle',
+                symbolSize: 8,
+                data: uvs
             },
             {
                 name: 'IP',
                 type: 'line',
-                data: ips,
-                markPoint: {
-                    data: [
-                        {type: 'max', name: '最大值'},
-                        {type: 'min', name: '最小值'}
-                    ]
-                }
+                smooth: true,
+                symbol: 'circle',
+                symbolSize: 8,
+                data: ips
             }
         ]
     };
