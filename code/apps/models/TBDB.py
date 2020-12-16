@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-12-13 22:02:15
+# @Last Modified time: 2020-12-16 14:46:32
 
 import records
 from hashids import Hashids
@@ -203,7 +203,7 @@ class TBDB(object):
             return None
 
         params = {'linkID':linkID, 'start_time':startTime, 'end_time':endTime}
-        sql = "select count(record_id) as total from link_record where link_id=:linkID and record_ctime >=:start_time and record_ctime <=:end_time"
+        sql = "select count(record_id) as total from link_record where link_id=:linkID and record_ctime >=:start_time and record_ctime <:end_time"
         rows = self._conn.query(sql, **params)
         row = rows.first(as_dict=True)
         if not row['total']:
@@ -212,7 +212,7 @@ class TBDB(object):
             pv = row['total']
 
         params = {'linkID':linkID, 'start_time':startTime, 'end_time':endTime}
-        sql = "select count(*) as total from (select * from link_record where link_id=:linkID and record_ctime >=:start_time and record_ctime <=:end_time group by record_ip) as t"
+        sql = "select count(*) as total from (select * from link_record where link_id=:linkID and record_ctime >=:start_time and record_ctime <:end_time group by record_ip) as t"
         rows = self._conn.query(sql, **params)
         row = rows.first(as_dict=True)
         if not row:
@@ -221,7 +221,7 @@ class TBDB(object):
             ip = row['total']
 
         params = {'linkID':linkID, 'start_time':startTime, 'end_time':endTime}
-        sql = "select count(record_id) as total from link_record where link_id=:linkID and record_ctime >=:start_time and record_ctime <=:end_time and record_uv_status=0"
+        sql = "select count(record_id) as total from link_record where link_id=:linkID and record_ctime >=:start_time and record_ctime <:end_time and record_uv_status=0"
         rows = self._conn.query(sql, **params)
         row = rows.first(as_dict=True)
         if not row['total']:
@@ -267,7 +267,7 @@ class TBDB(object):
 
         if limitDate == str(arrow.now().format('YYYY-MM-DD')):
             params = {'link_id':linkID, 'date':limitDate, 'type':'minute'}
-            sql = "select stat_day_pv as pv, stat_day_uv as uv, stat_day_ip as ip, stat_date as date, stat_time as time from link_stat where link_id=:link_id and stat_type=:type and stat_date=:date order by stat_id desc"
+            sql = "select stat_day_pv as pv, stat_day_uv as uv, stat_day_ip as ip, stat_date as date, DATE_FORMAT(stat_time, '%T') as time from link_stat where link_id=:link_id and stat_type=:type and stat_date=:date order by stat_id desc"
         else:
             params = {'link_id':linkID, 'date':limitDate, 'type':'day'}
             sql = "select stat_day_pv as pv, stat_day_uv as uv, stat_day_ip as ip, stat_date as date, '' as time from link_stat where link_id=:link_id and stat_type=:type and stat_date>=:date order by stat_date desc"
