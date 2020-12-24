@@ -2,7 +2,7 @@
 # @Author: smallevil
 # @Date:   2020-11-24 10:48:40
 # @Last Modified by:   smallevil
-# @Last Modified time: 2020-12-16 14:46:57
+# @Last Modified time: 2020-12-24 13:39:53
 
 from flask import Blueprint, render_template, redirect, session, request, current_app, url_for
 import functools
@@ -81,7 +81,28 @@ def adminLogout():
 @admin.route('/main', methods=['GET'])
 @isLogin
 def adminMain():
-    return render_template('/admin/main.html')
+    model = AdminModel(current_app.config['DATABASE_URI'])
+    urls = model.getUrlsByUserID(session['uid'], 0, 50)['list']
+
+    charts = {'legend_data':[], 'series_data':[], 'selected':{}, 'total':0}
+    for urlInfo in urls:
+        pvTotal = 0
+        for info in model.statPV(urlInfo['link_id'], str(arrow.now().format('YYYYMMDD'))):
+            pvTotal += info['pv']
+
+        charts['legend_data'].append(urlInfo['link_tag'])
+        charts['total'] += pvTotal
+        charts['selected'][urlInfo['link_tag']] = True
+        if pvTotal <= 0:
+            charts['selected'][urlInfo['link_tag']] = False
+        t = {}
+        t['name'] = urlInfo['link_tag']
+        t['value'] = pvTotal
+        t['link_id'] = urlInfo['link_id']
+        charts['series_data'].append(t)
+        del t
+
+    return render_template('/admin/main.html', charts=charts)
 
 #个人中心
 @admin.route('/profile', methods=['GET', 'POST'])
@@ -216,6 +237,7 @@ def adminUrls(page):
 
 
 #PV统计
+@admin.route('/statpv/link_id/<int:linkID>', defaults={'date': str(arrow.now().format('YYYYMMDD'))}, methods=['GET'])
 @admin.route('/statpv/link_id/<int:linkID>/date/<date>', methods=['GET'])
 @isLogin
 def adminStatPV(linkID, date):
@@ -294,14 +316,15 @@ def adminStatPlatform(linkID, date):
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
     rets['urls'] = model.getUrlsByUserID(session['uid'], 0, 10)['list']
 
-    charts = {'legend_data':[], 'series_data':[]}
+    charts = {'legend_data':[], 'series_data':[], 'total':0}
     for info in model.statPlatform(linkID, date):
-        charts['legend_data'].append(info['platform'] + ': ' + str(info['total']))
+        charts['legend_data'].append(info['platform'])
 
         t = {}
-        t['name'] = info['platform'] + ': ' + str(info['total'])
+        t['name'] = info['platform']
         t['value'] = info['total']
         charts['series_data'].append(t)
+        charts['total'] += info['total']
         del t
 
     return render_template('/admin/stat_platform.html', tplData=rets, charts=charts)
@@ -324,14 +347,15 @@ def adminStatBrowser(linkID, date):
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
     rets['urls'] = model.getUrlsByUserID(session['uid'], 0, 10)['list']
 
-    charts = {'legend_data':[], 'series_data':[]}
+    charts = {'legend_data':[], 'series_data':[], 'total':0}
     for info in model.statBrowser(linkID, date):
-        charts['legend_data'].append(info['browser'] + ': ' + str(info['total']))
+        charts['legend_data'].append(info['browser'])
 
         t = {}
-        t['name'] = info['browser'] + ': ' + str(info['total'])
+        t['name'] = info['browser']
         t['value'] = info['total']
         charts['series_data'].append(t)
+        charts['total'] += info['total']
         del t
 
     return render_template('/admin/stat_browser.html', tplData=rets, charts=charts)
@@ -353,18 +377,19 @@ def adminStatAddr(linkID, date):
     rets['date30'] = str(arrow.now().shift(days=-30).format('YYYYMMDD'))
     rets['urls'] = model.getUrlsByUserID(session['uid'], 0, 10)['list']
 
-    charts = {'legend_data':[], 'series_data':[]}
+    charts = {'legend_data':[], 'series_data':[], 'total':0}
     for info in model.statAddr(linkID, date):
 
         address = '未知'
         if len(info['address']) > 0:
             address = info['address']
-        charts['legend_data'].append(address + ': ' + str(info['total']))
+        charts['legend_data'].append(address)
 
         t = {}
-        t['name'] = address + ': ' + str(info['total'])
+        t['name'] = address
         t['value'] = info['total']
         charts['series_data'].append(t)
+        charts['total'] += info['total']
         del t
 
     return render_template('/admin/stat_addr.html', tplData=rets, charts=charts)

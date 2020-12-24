@@ -12,6 +12,13 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
 </head>
 
 <body>
@@ -20,10 +27,73 @@
     <div class="ui grid equal width aligned padded">
         {% include '/admin/left_menu.html' %}
         <div class="thirteen wide column">
-
+            <div id="container" style="height:500px;"></div>
         </div>
     <div>
 
 </body>
 
+<script>
+charts = {{ charts|tojson }};
+
+$(document).ready(function() {
+    showChart();
+});
+
+function showChart()
+{
+    var dom = document.getElementById("container");
+    var myChart = echarts.init(dom);
+    var app = {};
+    Option = null;
+
+    option = {
+        title: {
+            text: '最近50个短链今日PV统计',
+            subtext: '总数:' + charts.total.toString(),
+            left: 'left'
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b}: {c} | 占比: {d}%'
+        },
+        legend: {
+            type: 'scroll',
+            orient: 'vertical',
+            right: 10,
+            top: 20,
+            bottom: 20,
+            data: charts.legend_data,
+            selected: charts.selected
+        },
+        series: [
+            {
+                name: 'PV',
+                type: 'pie',
+                radius: '55%',
+                center: ['40%', '50%'],
+                data: charts.series_data,
+                itemStyle:{
+                normal:{
+                      label:{
+                        show: true,
+                        formatter: '{b}: {d}%'
+                      },
+                      labelLine :{show:true}
+                    }
+                }
+            }
+        ]
+    };
+
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+
+        myChart.on('click', function (params) {
+            targetUrl = '/a/statpv/link_id/' + params.data.link_id.toString();
+            location.href = targetUrl;
+        });
+    }
+}
+</script>
 </html>
