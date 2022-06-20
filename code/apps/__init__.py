@@ -13,7 +13,7 @@ from .models.AdminModel import AdminModel
 import os, logging, logging.handlers
 
 app = Flask(__name__, template_folder='templates', static_folder='static', instance_relative_config=True)
-app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)  #修复https会跳到http的问题
+#app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)  #修复https会跳到http的问题
 app.config.from_object('config')
 app.config.from_pyfile('config.py')
 app.register_blueprint(share)

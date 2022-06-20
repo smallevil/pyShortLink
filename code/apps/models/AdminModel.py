@@ -6,6 +6,7 @@
 
 import hashlib
 from .TBDB import TBDB
+import logging, logging.handlers
 
 class AdminModel(object):
     def __init__(self, dbURI):
@@ -36,6 +37,7 @@ class AdminModel(object):
     #添加短链接
     def addLinkInfo(self, userID, url, domain, tag):
         urlmd5 = self.md5(url)
+        logging.debug('userID:' + str(userID) + ' /tag:' + tag + ' /domain:' + domain + ' /url:' + url)
         info = self._db.getLinkInfoByMD5(userID, urlmd5)
         if info:
             return {'key':info['link_key']}

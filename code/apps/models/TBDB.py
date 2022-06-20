@@ -7,6 +7,7 @@
 import records
 from hashids import Hashids
 import arrow
+import logging, logging.handlers
 
 class TBDB(object):
     def __init__(self, dbURI):
@@ -18,6 +19,7 @@ class TBDB(object):
             self._conn = self._db.get_connection()
         else:
             self._conn = self._db
+            self._conn.query("SET GLOBAL wait_timeout=30")
 
 
     #根据昵称和密码得到信息
@@ -102,11 +104,13 @@ class TBDB(object):
         with self._db.transaction() as tx:
             params = {'tag':tag, 'domain':domain, 'url':url, 'urlmd5':urlmd5, 'uid':userID, 'ctime':str(arrow.now().format('YYYY-MM-DD HH:mm:ss'))}
             sql = "insert into link_info (link_tag, link_domain, link_url, link_url_md5, user_id, link_ctime) values (:tag, :domain, :url, :urlmd5, :uid, :ctime)"
+            logging.debug(sql)
             tx.query(sql, **params)
             if self._dbType:
                 sql = "select last_insert_id() as last_id"
             else:
                 sql = "select last_insert_rowid() as last_id"
+            logging.debug(sql)
             rows = tx.query(sql)
             row = rows.first(as_dict=True)
             lastID = row['last_id']
@@ -116,6 +120,7 @@ class TBDB(object):
 
             params = {'key':key, 'last_id':lastID}
             sql = "update link_info set link_key=:key where link_id=:last_id"
+            logging.debug(sql)
             tx.query(sql, **params)
             return key
 

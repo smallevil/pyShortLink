@@ -1,0 +1,293 @@
+2020-12-04 17:07:57:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 17:07:57:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 17:07:57:apscheduler.scheduler:INFO:881:Added job "stat_minute" to job store "default"
+2020-12-04 17:07:57:apscheduler.scheduler:INFO:881:Added job "stat_day" to job store "default"
+2020-12-04 17:07:57:apscheduler.scheduler:INFO:166:Scheduler started
+2020-12-04 17:07:57:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 17:07:57:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 17:10:00+08:00 (in 122.799563 seconds)
+2020-12-04 17:07:57:werkzeug:INFO:88: * Running on http://0.0.0.0:10000/ (Press CTRL+C to quit)
+2020-12-04 17:07:57:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-12-04 17:07:58:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 17:07:58:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 17:07:58:apscheduler.scheduler:INFO:881:Added job "stat_minute" to job store "default"
+2020-12-04 17:07:58:apscheduler.scheduler:INFO:881:Added job "stat_day" to job store "default"
+2020-12-04 17:07:58:apscheduler.scheduler:INFO:166:Scheduler started
+2020-12-04 17:07:58:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 17:07:58:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 17:10:00+08:00 (in 121.076163 seconds)
+2020-12-04 17:07:58:werkzeug:WARNING:88: * Debugger is active!
+2020-12-04 17:07:58:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-12-04 17:08:06:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 17:08:06] "GET /admin/ HTTP/1.1" 404 -
+2020-12-04 17:08:07:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 17:08:07] "GET /favicon.ico HTTP/1.1" 200 -
+2020-12-04 17:08:09:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 17:08:09] "GET /a/ HTTP/1.1" 302 -
+2020-12-04 17:08:09:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 17:08:09] "GET /a/main HTTP/1.1" 200 -
+2020-12-04 17:08:09:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 17:08:09] "GET /favicon.ico HTTP/1.1" 200 -
+2020-12-04 17:08:41:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/apps/views/admin.py', reloading
+2020-12-04 17:08:42:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-12-04 17:08:44:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 17:08:44:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 17:08:44:apscheduler.scheduler:INFO:881:Added job "stat_minute" to job store "default"
+2020-12-04 17:08:44:apscheduler.scheduler:INFO:881:Added job "stat_day" to job store "default"
+2020-12-04 17:08:44:apscheduler.scheduler:INFO:166:Scheduler started
+2020-12-04 17:08:44:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 17:08:44:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 17:10:00+08:00 (in 75.881714 seconds)
+2020-12-04 17:08:44:werkzeug:WARNING:88: * Debugger is active!
+2020-12-04 17:08:44:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-12-04 17:08:48:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 17:08:48] "GET /a/main HTTP/1.1" 200 -
+2020-12-04 17:08:48:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 17:08:48] "GET /favicon.ico HTTP/1.1" 200 -
+2020-12-04 17:09:05:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/apps/views/admin.py', reloading
+2020-12-04 17:09:06:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-12-04 17:09:08:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 17:09:08:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 17:09:08:apscheduler.scheduler:INFO:881:Added job "stat_minute" to job store "default"
+2020-12-04 17:09:08:apscheduler.scheduler:INFO:881:Added job "stat_day" to job store "default"
+2020-12-04 17:09:08:apscheduler.scheduler:INFO:166:Scheduler started
+2020-12-04 17:09:08:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 17:09:08:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 17:10:00+08:00 (in 51.385236 seconds)
+2020-12-04 17:09:08:werkzeug:WARNING:88: * Debugger is active!
+2020-12-04 17:09:08:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-12-04 17:09:12:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 17:09:12] "GET /a/main HTTP/1.1" 200 -
+2020-12-04 17:09:12:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 17:09:12] "GET /favicon.ico HTTP/1.1" 200 -
+2020-12-04 17:09:56:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/apps/views/admin.py', reloading
+2020-12-04 17:09:57:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-12-04 17:09:59:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 17:09:59:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 17:09:59:apscheduler.scheduler:INFO:881:Added job "stat_minute" to job store "default"
+2020-12-04 17:09:59:apscheduler.scheduler:INFO:881:Added job "stat_day" to job store "default"
+2020-12-04 17:09:59:apscheduler.scheduler:INFO:166:Scheduler started
+2020-12-04 17:09:59:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 17:09:59:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 17:10:00+08:00 (in 0.197858 seconds)
+2020-12-04 17:09:59:werkzeug:WARNING:88: * Debugger is active!
+2020-12-04 17:09:59:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-12-04 17:10:00:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 17:10:00:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 17:10:00:apscheduler.executors.default:INFO:123:Running job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 17:10:00 CST)" (scheduled at 2020-12-04 17:10:00+08:00)
+2020-12-04 17:10:00:apscheduler.executors.default:INFO:123:Running job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 17:10:00 CST)" (scheduled at 2020-12-04 17:10:00+08:00)
+2020-12-04 17:10:00:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 17:15:00+08:00 (in 299.998101 seconds)
+2020-12-04 17:10:00:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 17:15:00+08:00 (in 299.997696 seconds)
+2020-12-04 17:10:00:apps:INFO:18:start stat minute
+2020-12-04 17:10:00:apps:INFO:18:start stat minute
+2020-12-04 17:10:00:apscheduler.executors.default:INFO:144:Job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 17:15:00 CST)" executed successfully
+2020-12-04 17:10:00:apscheduler.executors.default:INFO:144:Job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 17:15:00 CST)" executed successfully
+2020-12-04 17:10:07:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 17:10:07] "GET /a/main HTTP/1.1" 500 -
+2020-12-04 17:10:07:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 17:10:07] "GET /a/main?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2020-12-04 17:10:07:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 17:10:07] "GET /a/main?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2020-12-04 17:10:07:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 17:10:07] "GET /a/main?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2020-12-04 17:10:07:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 17:10:07] "GET /a/main?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2020-12-04 17:10:07:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 17:10:07] "GET /a/main?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2020-12-04 17:10:07:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 17:10:07] "GET /a/main?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2020-12-04 17:13:15:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/apps/views/admin.py', reloading
+2020-12-04 17:13:16:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-12-04 17:13:20:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 17:13:20:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 17:13:20:apscheduler.scheduler:INFO:881:Added job "stat_minute" to job store "default"
+2020-12-04 17:13:20:apscheduler.scheduler:INFO:881:Added job "stat_day" to job store "default"
+2020-12-04 17:13:20:apscheduler.scheduler:INFO:166:Scheduler started
+2020-12-04 17:13:20:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 17:13:20:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 17:15:00+08:00 (in 99.517887 seconds)
+2020-12-04 17:13:20:werkzeug:WARNING:88: * Debugger is active!
+2020-12-04 17:13:20:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-12-04 17:13:21:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 17:13:21] "GET /a/main HTTP/1.1" 200 -
+2020-12-04 17:13:22:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 17:13:22] "GET /favicon.ico HTTP/1.1" 200 -
+2020-12-04 17:14:32:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/apps/views/admin.py', reloading
+2020-12-04 17:14:33:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-12-04 17:14:35:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 17:14:35:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 17:14:35:apscheduler.scheduler:INFO:881:Added job "stat_minute" to job store "default"
+2020-12-04 17:14:35:apscheduler.scheduler:INFO:881:Added job "stat_day" to job store "default"
+2020-12-04 17:14:35:apscheduler.scheduler:INFO:166:Scheduler started
+2020-12-04 17:14:35:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 17:14:35:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 17:15:00+08:00 (in 24.227697 seconds)
+2020-12-04 17:14:35:werkzeug:WARNING:88: * Debugger is active!
+2020-12-04 17:14:35:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-12-04 17:15:00:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 17:15:00:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 17:15:00:apscheduler.executors.default:INFO:123:Running job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 17:15:00 CST)" (scheduled at 2020-12-04 17:15:00+08:00)
+2020-12-04 17:15:00:apscheduler.executors.default:INFO:123:Running job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 17:15:00 CST)" (scheduled at 2020-12-04 17:15:00+08:00)
+2020-12-04 17:15:00:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 17:20:00+08:00 (in 299.990167 seconds)
+2020-12-04 17:15:00:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 17:20:00+08:00 (in 299.989861 seconds)
+2020-12-04 17:15:00:apps:INFO:18:start stat minute
+2020-12-04 17:15:00:apps:INFO:18:start stat minute
+2020-12-04 17:15:00:apscheduler.executors.default:INFO:144:Job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 17:20:00 CST)" executed successfully
+2020-12-04 17:15:00:apscheduler.executors.default:INFO:144:Job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 17:20:00 CST)" executed successfully
+2020-12-04 17:20:00:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 17:20:00:apscheduler.executors.default:INFO:123:Running job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 17:20:00 CST)" (scheduled at 2020-12-04 17:20:00+08:00)
+2020-12-04 17:20:00:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 17:25:00+08:00 (in 299.994589 seconds)
+2020-12-04 17:20:00:apps:INFO:18:start stat minute
+2020-12-04 17:20:00:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 17:20:00:apscheduler.executors.default:INFO:123:Running job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 17:20:00 CST)" (scheduled at 2020-12-04 17:20:00+08:00)
+2020-12-04 17:20:00:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 17:25:00+08:00 (in 299.988654 seconds)
+2020-12-04 17:20:00:apps:INFO:18:start stat minute
+2020-12-04 17:20:00:apscheduler.executors.default:INFO:144:Job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 17:25:00 CST)" executed successfully
+2020-12-04 17:20:00:apscheduler.executors.default:INFO:144:Job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 17:25:00 CST)" executed successfully
+2020-12-04 17:25:00:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 17:25:00:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 17:25:00:apscheduler.executors.default:INFO:123:Running job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 17:25:00 CST)" (scheduled at 2020-12-04 17:25:00+08:00)
+2020-12-04 17:25:00:apscheduler.executors.default:INFO:123:Running job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 17:25:00 CST)" (scheduled at 2020-12-04 17:25:00+08:00)
+2020-12-04 17:25:00:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 17:30:00+08:00 (in 299.993998 seconds)
+2020-12-04 17:25:00:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 17:30:00+08:00 (in 299.994163 seconds)
+2020-12-04 17:25:00:apps:INFO:18:start stat minute
+2020-12-04 17:25:00:apps:INFO:18:start stat minute
+2020-12-04 17:25:00:apscheduler.executors.default:INFO:144:Job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 17:30:00 CST)" executed successfully
+2020-12-04 17:25:00:apscheduler.executors.default:INFO:144:Job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 17:30:00 CST)" executed successfully
+2020-12-04 18:05:49:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 18:05:49:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 18:05:49:apscheduler.scheduler:INFO:881:Added job "stat_minute" to job store "default"
+2020-12-04 18:05:49:apscheduler.scheduler:INFO:881:Added job "stat_day" to job store "default"
+2020-12-04 18:05:49:apscheduler.scheduler:INFO:166:Scheduler started
+2020-12-04 18:05:49:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 18:05:49:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 18:10:00+08:00 (in 250.060016 seconds)
+2020-12-04 18:05:49:werkzeug:INFO:88: * Running on http://0.0.0.0:10000/ (Press CTRL+C to quit)
+2020-12-04 18:05:49:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-12-04 18:05:52:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 18:05:52:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 18:05:52:apscheduler.scheduler:INFO:881:Added job "stat_minute" to job store "default"
+2020-12-04 18:05:52:apscheduler.scheduler:INFO:881:Added job "stat_day" to job store "default"
+2020-12-04 18:05:52:apscheduler.scheduler:INFO:166:Scheduler started
+2020-12-04 18:05:52:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 18:05:52:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 18:10:00+08:00 (in 247.632727 seconds)
+2020-12-04 18:05:52:werkzeug:WARNING:88: * Debugger is active!
+2020-12-04 18:05:52:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-12-04 18:06:03:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:06:03] "GET /a/ HTTP/1.1" 500 -
+2020-12-04 18:06:03:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:06:03] "GET /a/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2020-12-04 18:06:03:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:06:03] "GET /a/?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2020-12-04 18:06:03:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:06:03] "GET /a/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2020-12-04 18:06:03:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:06:03] "GET /a/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2020-12-04 18:06:03:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:06:03] "GET /a/?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2020-12-04 18:06:03:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:06:03] "GET /a/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2020-12-04 18:06:44:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/apps/views/admin.py', reloading
+2020-12-04 18:06:45:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-12-04 18:06:47:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 18:06:47:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 18:06:47:apscheduler.scheduler:INFO:881:Added job "stat_minute" to job store "default"
+2020-12-04 18:06:47:apscheduler.scheduler:INFO:881:Added job "stat_day" to job store "default"
+2020-12-04 18:06:47:apscheduler.scheduler:INFO:166:Scheduler started
+2020-12-04 18:06:47:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 18:06:47:werkzeug:WARNING:88: * Debugger is active!
+2020-12-04 18:06:47:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 18:10:00+08:00 (in 192.437995 seconds)
+2020-12-04 18:06:47:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-12-04 18:06:50:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:06:50] "GET /a/ HTTP/1.1" 302 -
+2020-12-04 18:06:50:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:06:50] "GET /a/main HTTP/1.1" 200 -
+2020-12-04 18:06:50:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:06:50] "GET /favicon.ico HTTP/1.1" 200 -
+2020-12-04 18:07:22:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/apps/views/admin.py', reloading
+2020-12-04 18:07:23:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-12-04 18:07:25:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 18:07:25:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 18:07:25:apscheduler.scheduler:INFO:881:Added job "stat_minute" to job store "default"
+2020-12-04 18:07:25:apscheduler.scheduler:INFO:881:Added job "stat_day" to job store "default"
+2020-12-04 18:07:25:apscheduler.scheduler:INFO:166:Scheduler started
+2020-12-04 18:07:25:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 18:07:25:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 18:10:00+08:00 (in 154.072539 seconds)
+2020-12-04 18:07:25:werkzeug:WARNING:88: * Debugger is active!
+2020-12-04 18:07:25:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-12-04 18:07:30:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:07:30] "GET /a/main HTTP/1.1" 500 -
+2020-12-04 18:07:30:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:07:30] "GET /a/main?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2020-12-04 18:07:30:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:07:30] "GET /a/main?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2020-12-04 18:07:30:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:07:30] "GET /a/main?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2020-12-04 18:07:30:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:07:30] "GET /a/main?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2020-12-04 18:07:30:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:07:30] "GET /a/main?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2020-12-04 18:07:30:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:07:30] "GET /a/main?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2020-12-04 18:08:03:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/apps/views/admin.py', reloading
+2020-12-04 18:08:04:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-12-04 18:08:06:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 18:08:06:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 18:08:06:apscheduler.scheduler:INFO:881:Added job "stat_minute" to job store "default"
+2020-12-04 18:08:06:apscheduler.scheduler:INFO:881:Added job "stat_day" to job store "default"
+2020-12-04 18:08:06:apscheduler.scheduler:INFO:166:Scheduler started
+2020-12-04 18:08:06:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 18:08:06:werkzeug:WARNING:88: * Debugger is active!
+2020-12-04 18:08:06:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 18:10:00+08:00 (in 113.704382 seconds)
+2020-12-04 18:08:06:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-12-04 18:08:10:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:08:10] "GET /a/main HTTP/1.1" 200 -
+2020-12-04 18:08:10:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:08:10] "GET /favicon.ico HTTP/1.1" 200 -
+2020-12-04 18:08:26:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/apps/views/admin.py', reloading
+2020-12-04 18:08:27:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-12-04 18:08:29:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 18:08:29:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 18:08:29:apscheduler.scheduler:INFO:881:Added job "stat_minute" to job store "default"
+2020-12-04 18:08:29:apscheduler.scheduler:INFO:881:Added job "stat_day" to job store "default"
+2020-12-04 18:08:29:apscheduler.scheduler:INFO:166:Scheduler started
+2020-12-04 18:08:29:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 18:08:29:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 18:10:00+08:00 (in 90.478722 seconds)
+2020-12-04 18:08:29:werkzeug:WARNING:88: * Debugger is active!
+2020-12-04 18:08:29:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-12-04 18:08:32:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:08:32] "GET /a/main HTTP/1.1" 200 -
+2020-12-04 18:08:32:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:08:32] "GET /favicon.ico HTTP/1.1" 200 -
+2020-12-04 18:10:00:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 18:10:00:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 18:10:00:apscheduler.executors.default:INFO:123:Running job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 18:10:00 CST)" (scheduled at 2020-12-04 18:10:00+08:00)
+2020-12-04 18:10:00:apscheduler.executors.default:INFO:123:Running job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 18:10:00 CST)" (scheduled at 2020-12-04 18:10:00+08:00)
+2020-12-04 18:10:00:apps:INFO:18:start stat minute
+2020-12-04 18:10:00:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 18:15:00+08:00 (in 299.994796 seconds)
+2020-12-04 18:10:00:apps:INFO:18:start stat minute
+2020-12-04 18:10:00:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 18:15:00+08:00 (in 299.995490 seconds)
+2020-12-04 18:10:00:apscheduler.executors.default:INFO:144:Job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 18:15:00 CST)" executed successfully
+2020-12-04 18:10:00:apscheduler.executors.default:INFO:144:Job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 18:15:00 CST)" executed successfully
+2020-12-04 18:15:00:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 18:15:00:apscheduler.executors.default:INFO:123:Running job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 18:15:00 CST)" (scheduled at 2020-12-04 18:15:00+08:00)
+2020-12-04 18:15:00:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 18:20:00+08:00 (in 299.966259 seconds)
+2020-12-04 18:15:00:apps:INFO:18:start stat minute
+2020-12-04 18:15:00:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 18:15:00:apscheduler.executors.default:INFO:123:Running job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 18:15:00 CST)" (scheduled at 2020-12-04 18:15:00+08:00)
+2020-12-04 18:15:00:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 18:20:00+08:00 (in 299.957882 seconds)
+2020-12-04 18:15:00:apps:INFO:18:start stat minute
+2020-12-04 18:15:00:apscheduler.executors.default:INFO:144:Job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 18:20:00 CST)" executed successfully
+2020-12-04 18:15:00:apscheduler.executors.default:INFO:144:Job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 18:20:00 CST)" executed successfully
+2020-12-04 18:15:34:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/apps/views/admin.py', reloading
+2020-12-04 18:15:35:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-12-04 18:15:38:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 18:15:38:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 18:15:38:apscheduler.scheduler:INFO:881:Added job "stat_minute" to job store "default"
+2020-12-04 18:15:38:apscheduler.scheduler:INFO:881:Added job "stat_day" to job store "default"
+2020-12-04 18:15:38:apscheduler.scheduler:INFO:166:Scheduler started
+2020-12-04 18:15:38:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 18:15:38:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 18:20:00+08:00 (in 261.383008 seconds)
+2020-12-04 18:15:38:werkzeug:WARNING:88: * Debugger is active!
+2020-12-04 18:15:38:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-12-04 18:15:57:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/apps/__init__.py', reloading
+2020-12-04 18:15:59:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-12-04 18:16:02:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 18:16:02:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 18:16:02:apscheduler.scheduler:INFO:881:Added job "stat_minute" to job store "default"
+2020-12-04 18:16:02:apscheduler.scheduler:INFO:881:Added job "stat_day" to job store "default"
+2020-12-04 18:16:02:apscheduler.scheduler:INFO:166:Scheduler started
+2020-12-04 18:16:02:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 18:16:02:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 18:20:00+08:00 (in 237.209798 seconds)
+2020-12-04 18:16:02:werkzeug:WARNING:88: * Debugger is active!
+2020-12-04 18:16:02:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-12-04 18:16:09:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/apps/__init__.py', reloading
+2020-12-04 18:16:10:werkzeug:INFO:88: * Restarting with fsevents reloader
+2020-12-04 18:16:13:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 18:16:13:apscheduler.scheduler:INFO:440:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2020-12-04 18:16:13:apscheduler.scheduler:INFO:881:Added job "stat_minute" to job store "default"
+2020-12-04 18:16:13:apscheduler.scheduler:INFO:881:Added job "stat_day" to job store "default"
+2020-12-04 18:16:13:apscheduler.scheduler:INFO:166:Scheduler started
+2020-12-04 18:16:13:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 18:16:13:werkzeug:WARNING:88: * Debugger is active!
+2020-12-04 18:16:13:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 18:20:00+08:00 (in 226.366749 seconds)
+2020-12-04 18:16:13:werkzeug:INFO:88: * Debugger PIN: 799-039-226
+2020-12-04 18:16:19:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:16:19] "GET /a/main HTTP/1.1" 200 -
+2020-12-04 18:16:20:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:16:20] "GET /favicon.ico HTTP/1.1" 200 -
+2020-12-04 18:16:22:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:16:22] "GET /a/urls/page/1 HTTP/1.1" 200 -
+2020-12-04 18:16:22:werkzeug:INFO:88:127.0.0.1 - - [04/Dec/2020 18:16:22] "GET /favicon.ico HTTP/1.1" 200 -
+2020-12-04 18:20:00:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 18:20:00:apscheduler.executors.default:INFO:123:Running job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 18:20:00 CST)" (scheduled at 2020-12-04 18:20:00+08:00)
+2020-12-04 18:20:00:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 18:20:00:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 18:25:00+08:00 (in 299.996459 seconds)
+2020-12-04 18:20:00:apscheduler.executors.default:INFO:123:Running job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 18:20:00 CST)" (scheduled at 2020-12-04 18:20:00+08:00)
+2020-12-04 18:20:00:apps:INFO:18:start stat minute
+2020-12-04 18:20:00:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 18:25:00+08:00 (in 299.993660 seconds)
+2020-12-04 18:20:00:apps:INFO:18:start stat minute
+2020-12-04 18:20:00:apscheduler.executors.default:INFO:144:Job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 18:25:00 CST)" executed successfully
+2020-12-04 18:20:00:apscheduler.executors.default:INFO:144:Job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 18:25:00 CST)" executed successfully
+2020-12-04 18:25:00:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 18:25:00:apscheduler.scheduler:DEBUG:940:Looking for jobs to run
+2020-12-04 18:25:00:apscheduler.executors.default:INFO:123:Running job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 18:25:00 CST)" (scheduled at 2020-12-04 18:25:00+08:00)
+2020-12-04 18:25:00:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 18:30:00+08:00 (in 299.995948 seconds)
+2020-12-04 18:25:00:apps:INFO:18:start stat minute
+2020-12-04 18:25:00:apscheduler.executors.default:INFO:123:Running job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 18:25:00 CST)" (scheduled at 2020-12-04 18:25:00+08:00)
+2020-12-04 18:25:00:apscheduler.scheduler:DEBUG:1020:Next wakeup is due at 2020-12-04 18:30:00+08:00 (in 299.994602 seconds)
+2020-12-04 18:25:00:apps:INFO:18:start stat minute
+2020-12-04 18:25:00:apscheduler.executors.default:INFO:144:Job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 18:30:00 CST)" executed successfully
+2020-12-04 18:25:00:apscheduler.executors.default:INFO:144:Job "stat_minute (trigger: cron[minute='0,5,10,15,20,25,30,35,40,45,50,55'], next run at: 2020-12-04 18:30:00 CST)" executed successfully
+2020-12-04 18:28:58:werkzeug:INFO:88: * Detected change in '/Users/wu/Code/pyShortLink/code/apps/__init__.py', reloading
+2020-12-04 18:28:59:werkzeug:INFO:88: * Restarting with fsevents reloader
